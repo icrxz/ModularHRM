@@ -1,0 +1,20 @@
+package br.com.ec6.modular.global;
+
+import br.com.ec6.modular.entities.User;
+
+public class SingletonUserLogged {
+
+    private static SingletonUserLogged single_instance = null;
+
+    public User UserLogged;
+
+    private SingletonUserLogged(){}
+
+    public static SingletonUserLogged getUserLogged()
+    {
+        if(single_instance == null)
+            single_instance = new SingletonUserLogged();
+
+        return single_instance;
+    }
+}
