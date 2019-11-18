@@ -1,20 +1,7 @@
 CREATE DATABASE MODULARHRM
 GO
 
-USE MODULARHRM
-GO
-
-CREATE TABLE tbProfiles(
-	Id int PRIMARY KEY IDENTITY(1,1),
-	Name VARCHAR(100),
-	PermissionLevel VARCHAR(100),
-	CreatedDate DATETIME, 
-	LastModifiedDate DATETIME,
-	CreateById int,
-	CONSTRAINT FK_User_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id),
-	LastModifiedbyId int,
-	CONSTRAINT FK_User_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
-)
+USE  MODULARHRM
 GO
 
 CREATE TABLE tbUser(
@@ -26,12 +13,30 @@ CREATE TABLE tbUser(
 	CreatedDate DATETIME, 
 	LastModifiedDate DATETIME,
 	Profile int not null,
-	CONSTRAINT FK_User_Profile FOREIGN KEY (Profile) REFERENCES tbProfile(Id),
 	CreateById int,
 	CONSTRAINT FK_User_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id),
 	LastModifiedbyId int,
 	CONSTRAINT FK_User_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
 )
+GO
+
+
+CREATE TABLE tbProfiles(
+	Id int PRIMARY KEY IDENTITY(1,1),
+	Name VARCHAR(100),
+	PermissionLevel VARCHAR(100),
+	CreatedDate DATETIME, 
+	LastModifiedDate DATETIME,
+	CreateById int,
+	CONSTRAINT FK_UserProfile_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id),
+	LastModifiedbyId int,
+	CONSTRAINT FK_UserProfile_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
+)
+GO
+
+
+Alter TABLE tbUser 
+add CONSTRAINT FK_UserToProfile FOREIGN KEY (Profile) REFERENCES tbProfiles(Id)
 GO
 
 CREATE TABLE tbProject(
@@ -72,9 +77,9 @@ CREATE TABLE tbMember(
 	CreatedDate DATETIME, 
 	LastModifiedDate DATETIME,
 	CreateById int, 
-	CONSTRAINT FK_TeamMember_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id),
+	CONSTRAINT FK_Member_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id),
 	LastModifiedbyId int, 
-	CONSTRAINT FK_TeamMember_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
+	CONSTRAINT FK_Member_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
 	
 )
 
@@ -119,7 +124,7 @@ CREATE TABLE tbTask(
 	DueDate	DATETIME, 	
 	TaskCompleted BIT,  
 	AssignedTo int not null, 
-	CONSTRAINT FK_Task_AssignedTo FOREIGN KEY (AssignedTo) REFERENCES tbTeamMember(Id),
+	CONSTRAINT FK_Task_AssignedToMember FOREIGN KEY (AssignedTo) REFERENCES tbTeamMember(Id),
 	RelatedEvent int not null, 
 	CONSTRAINT FK_Task_Event FOREIGN KEY (RelatedEvent) REFERENCES tbEvent(Id),
 	CreatedDate DATETIME, 
