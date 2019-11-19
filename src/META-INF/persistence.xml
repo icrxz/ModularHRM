@@ -4,12 +4,11 @@
   <persistence-unit name="ModularHRM" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 				
-		<class>br.com.ec6.modular.entities.User</class>
-		<class>br.com.ec6.modular.entities.Profile</class>
-				
         <properties>            
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://DESKTOP-S9D1C6E;databaseName=MODULARHRM" />
+
+            <property name="hibernate.connection.url" value = "jdbc:sqlserver://DESKTOP-S9D1C6E;instanceName=SQLEXPRESS;databaseName=MODULARHRM" />
+
             <property name="javax.persistence.jdbc.user" value="sa" />
             <property name="javax.persistence.jdbc.password" value="123456" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>

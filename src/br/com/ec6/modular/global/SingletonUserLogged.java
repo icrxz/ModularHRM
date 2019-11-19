@@ -1,7 +1,7 @@
 package br.com.ec6.modular.global;
 
 import br.com.ec6.modular.entities.User;
-
+import com.microsoft.sqlserver.jdbc.*;
 public class SingletonUserLogged {
 
     private static SingletonUserLogged single_instance = null;

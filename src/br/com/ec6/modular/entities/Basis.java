@@ -17,7 +17,6 @@ public abstract class Basis {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
     private int Id;
 
     @Column(name="CreatedDate")

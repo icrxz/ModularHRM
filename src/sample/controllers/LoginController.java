@@ -10,9 +10,9 @@ import javafx.scene.control.Alert;
 public class LoginController {
 
     public LoginController(){
-        /*try{
-        Teste();}
-        catch(Exception ex){
+        //try{
+        Teste();
+        /*}catch(Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(ex.getMessage());
             alert.show();
@@ -21,7 +21,6 @@ public class LoginController {
     }
 
     public void Teste() {
-        ProfilesDAO pDao = new ProfilesDAO();
         UsersDAO uDao = new UsersDAO();
 
         SingletonUserLogged.UserLogged = (User) uDao.Seleciona(5);

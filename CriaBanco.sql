@@ -1,7 +1,7 @@
 CREATE DATABASE MODULARHRM
 GO
 
-USE MODULARHRM
+USE  MODULARHRM
 GO
 
 CREATE TABLE tbProfile(
@@ -24,11 +24,8 @@ CREATE TABLE tbUser(
 	CreatedDate DATETIME, 
 	LastModifiedDate DATETIME,
 	Profile int not null,
-	CONSTRAINT FK_User_Profile FOREIGN KEY (Profile) REFERENCES tbProfile(Id),
 	CreateById int,
-	CONSTRAINT FK_User_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id),
-	LastModifiedbyId int,
-	CONSTRAINT FK_User_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
+	LastModifiedbyId int
 )
 GO
 
@@ -38,7 +35,6 @@ GO
 
 ALTER TABLE tbProfile
 ADD CONSTRAINT FK_Profile_User_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id)
-GO
 
 CREATE TABLE tbProject(
 	Id int PRIMARY KEY IDENTITY(1,1),
@@ -126,7 +122,7 @@ CREATE TABLE tbTask(
 	DueDate	DATETIME, 	
 	TaskCompleted BIT,  
 	AssignedTo int not null, 
-	CONSTRAINT FK_Task_AssignedTo FOREIGN KEY (AssignedTo) REFERENCES tbTeamMember(Id),
+	CONSTRAINT FK_Task_AssignedToMember FOREIGN KEY (AssignedTo) REFERENCES tbTeamMember(Id),
 	RelatedEvent int not null, 
 	CONSTRAINT FK_Task_Event FOREIGN KEY (RelatedEvent) REFERENCES tbEvent(Id),
 	CreatedDate DATETIME, 
