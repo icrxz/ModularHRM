@@ -1,7 +1,6 @@
 package br.com.ec6.modular.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,7 +15,11 @@ public class Task extends Basis {
 
     private boolean TaskCompleted;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "AssignedTo")
     private TeamMember AssignedTo;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "RelatedEvent")
     private Event RelatedEvent;
 }

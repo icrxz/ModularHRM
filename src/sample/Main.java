@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("forms/frLogin.fxml"));
         primaryStage.setTitle("Modular HRM - Login");
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root, 800, 400));
         primaryStage.show();
     }
 

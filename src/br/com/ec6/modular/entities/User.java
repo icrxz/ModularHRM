@@ -18,10 +18,10 @@ public class User extends Basis {
     private String Email;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Id")
+    @JoinColumn(name = "Profile")
     private Profile profile;
 
-    private List<Member> Members = new ArrayList<>();
+    //private List<Member> Members = new ArrayList<>();
 
     public String getName() {
         return Name;

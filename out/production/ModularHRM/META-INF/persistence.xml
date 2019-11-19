@@ -6,10 +6,18 @@
 				
 		<class>br.com.ec6.modular.entities.User</class>
 		<class>br.com.ec6.modular.entities.Profile</class>
+		<class>br.com.ec6.modular.entities.Event</class>
+		<class>br.com.ec6.modular.entities.Member</class>
+		<class>br.com.ec6.modular.entities.Team</class>
+		<class>br.com.ec6.modular.entities.TeamMember</class>
+		<class>br.com.ec6.modular.entities.Task</class>
+		<class>br.com.ec6.modular.entities.Project</class>
+		<class>br.com.ec6.modular.entities.Basis</class>
 				
         <properties>            
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://DESKTOP-MKQ79S7\SQLEXPRESS;databaseName=MODULARHRM" />
+            <property name="hibernate.connection.url" value = "jdbc:sqlserver://GABRIEL-TEIXEIR;instanceName=SQLEXPRESS;databaseName=MODULARHRM" />
+
             <property name="javax.persistence.jdbc.user" value="sa" />
             <property name="javax.persistence.jdbc.password" value="123456" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
