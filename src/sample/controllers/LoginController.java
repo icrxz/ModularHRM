@@ -4,6 +4,7 @@ import br.com.ec6.modular.dao.ProfilesDAO;
 import br.com.ec6.modular.dao.UsersDAO;
 import br.com.ec6.modular.entities.Profile;
 import br.com.ec6.modular.entities.User;
+import br.com.ec6.modular.global.SingletonUserLogged;
 import javafx.scene.control.Alert;
 
 public class LoginController {
@@ -16,11 +17,15 @@ public class LoginController {
             alert.setContentText(ex.getMessage());
             alert.show();
         }*/
+        Teste();
     }
 
     public void Teste() {
         ProfilesDAO pDao = new ProfilesDAO();
         UsersDAO uDao = new UsersDAO();
+
+        SingletonUserLogged.UserLogged = (User) uDao.Seleciona(5);
+
         Profile p = new Profile();
         User u = new User();
         p.setName("Desenvolvedor");

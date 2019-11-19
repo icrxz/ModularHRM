@@ -15,8 +15,4 @@ public class Task extends Basis {
     private LocalDateTime DueDate;
 
     private boolean TaskCompleted;
-
-    private TeamMember AssignedTo;
-
-    private Event RelatedEvent;
 }

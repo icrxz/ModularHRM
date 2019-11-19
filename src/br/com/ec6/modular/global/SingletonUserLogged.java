@@ -6,7 +6,7 @@ public class SingletonUserLogged {
 
     private static SingletonUserLogged single_instance = null;
 
-    public User UserLogged;
+    public static User UserLogged;
 
     private SingletonUserLogged(){}
 

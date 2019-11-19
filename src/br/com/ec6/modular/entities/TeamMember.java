@@ -9,11 +9,4 @@ public class TeamMember extends Basis{
     @Column(name = "Name")
     private String Name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Id")
-    private Member member;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Id")
-    private Team team;
 }

@@ -14,9 +14,6 @@ public class Profile extends Basis{
     @Column(name = "PermissionLevel")
     private String PermissionLevel;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "profile")
-    private List<User> Users = new ArrayList<>();
-
     public String getName() {
         return Name;
     }

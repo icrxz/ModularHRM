@@ -4,16 +4,14 @@ GO
 USE MODULARHRM
 GO
 
-CREATE TABLE tbProfiles(
+CREATE TABLE tbProfile(
 	Id int PRIMARY KEY IDENTITY(1,1),
 	Name VARCHAR(100),
 	PermissionLevel VARCHAR(100),
 	CreatedDate DATETIME, 
 	LastModifiedDate DATETIME,
 	CreateById int,
-	CONSTRAINT FK_User_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id),
-	LastModifiedbyId int,
-	CONSTRAINT FK_User_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
+	LastModifiedbyId int
 )
 GO
 
@@ -32,6 +30,14 @@ CREATE TABLE tbUser(
 	LastModifiedbyId int,
 	CONSTRAINT FK_User_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
 )
+GO
+
+ALTER TABLE tbProfile
+ADD CONSTRAINT FK_Profile_User_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
+GO
+
+ALTER TABLE tbProfile
+ADD CONSTRAINT FK_Profile_User_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id)
 GO
 
 CREATE TABLE tbProject(
@@ -72,11 +78,12 @@ CREATE TABLE tbMember(
 	CreatedDate DATETIME, 
 	LastModifiedDate DATETIME,
 	CreateById int, 
-	CONSTRAINT FK_TeamMember_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id),
+	CONSTRAINT FK_Member_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id),
 	LastModifiedbyId int, 
-	CONSTRAINT FK_TeamMember_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
+	CONSTRAINT FK_Member_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
 	
 )
+GO
 
 CREATE TABLE tbTeamMember(
 	Id int PRIMARY KEY IDENTITY(1,1),
@@ -129,4 +136,10 @@ CREATE TABLE tbTask(
 	LastModifiedbyId int, 
 	CONSTRAINT FK_Task_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
 )
+GO
+
+INSERT INTO tbProfile VALUES ('modular', 'Desenvolvedor', GETDATE(), GETDATE(), NULL, NULL)
+GO
+
+INSERT INTO tbUser VALUES ('Igor', 'igor', '123', 'igor@gmail.com', GETDATE(), GETDATE(), 2, NULL, NULL)
 GO
