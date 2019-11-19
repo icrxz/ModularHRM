@@ -10,10 +10,10 @@ public class TeamMember extends Basis{
     private String Name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Id")
+    @JoinColumn(name = "Member")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Id")
+    @JoinColumn(name = "Team")
     private Team team;
 }

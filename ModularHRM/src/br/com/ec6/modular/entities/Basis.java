@@ -11,13 +11,12 @@ public abstract class Basis {
     public Basis(){
         setCreatedDate(LocalDateTime.now());
         setLastModifiedDate(LocalDateTime.now());
-        setCreateById(SingletonUserLogged.getUserLogged().getId());
-        setLastModifiedbyId(SingletonUserLogged.getUserLogged().getId());
+        //setCreateById(SingletonUserLogged.getUserLogged().getId());
+        //setLastModifiedbyId(SingletonUserLogged.getUserLogged().getId());
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
     private int Id;
 
     @Column(name="CreatedDate")

@@ -1,6 +1,9 @@
 package br.com.ec6.modular.dao;
 
 import br.com.ec6.modular.entities.Basis;
+import br.com.ec6.modular.entities.Event;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -53,6 +56,10 @@ public abstract class BasisDAO <E extends Basis> {
     }
 
     private final EntityManager getConnection(){
+        /*SessionFactory sessionFactory = new MetadataSources(serviceRegistry)
+                .addAnnotatedClass(Basis.class)
+                .addAnnotatedClass(Event.class)*/
+
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("ModularHRM");
         EntityManager manager = factory.createEntityManager();
         return manager;
