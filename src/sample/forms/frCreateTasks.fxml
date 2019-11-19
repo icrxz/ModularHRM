@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="519.0" prefWidth="525.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.FrCreateTasks">
+   <children>
+      <Label layoutX="135.0" layoutY="14.0" styleClass="label-header" text="Criar Evento" />
+      <Label layoutX="118.0" layoutY="123.0" text="Evento: " />
+      <Label layoutX="126.0" layoutY="178.0" text="Local:" />
+      <Label layoutX="91.0" layoutY="232.0" text="Data/Hora:" />
+      <Label layoutX="93.0" layoutY="328.0" text="Descrição:" />
+      <TextField id="eventTask" layoutX="186.0" layoutY="115.0" />
+      <TextField id="localTask" layoutX="186.0" layoutY="170.0" />
+      <TextArea id="descriTask" layoutX="186.0" layoutY="303.0" prefHeight="116.0" prefWidth="200.0" />
+      <Button id="brtCreateTask" layoutX="131.0" layoutY="442.0" mnemonicParsing="false" text="Criar" />
+      <Button id="btnCancel" layoutX="286.0" layoutY="442.0" mnemonicParsing="false" text="Cancelar" />
+      <DatePicker id="dateTask" layoutX="186.0" layoutY="224.0" prefHeight="37.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
