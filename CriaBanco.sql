@@ -4,6 +4,17 @@ GO
 USE  MODULARHRM
 GO
 
+CREATE TABLE tbProfile(
+	Id int PRIMARY KEY IDENTITY(1,1),
+	Name VARCHAR(100),
+	PermissionLevel VARCHAR(100),
+	CreatedDate DATETIME, 
+	LastModifiedDate DATETIME,
+	CreateById int,
+	LastModifiedbyId int
+)
+GO
+
 CREATE TABLE tbUser(
 	Id int PRIMARY KEY IDENTITY(1,1),
 	Name VARCHAR(100),
@@ -14,30 +25,16 @@ CREATE TABLE tbUser(
 	LastModifiedDate DATETIME,
 	Profile int not null,
 	CreateById int,
-	CONSTRAINT FK_User_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id),
-	LastModifiedbyId int,
-	CONSTRAINT FK_User_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
+	LastModifiedbyId int
 )
 GO
 
-
-CREATE TABLE tbProfiles(
-	Id int PRIMARY KEY IDENTITY(1,1),
-	Name VARCHAR(100),
-	PermissionLevel VARCHAR(100),
-	CreatedDate DATETIME, 
-	LastModifiedDate DATETIME,
-	CreateById int,
-	CONSTRAINT FK_UserProfile_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id),
-	LastModifiedbyId int,
-	CONSTRAINT FK_UserProfile_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
-)
+ALTER TABLE tbProfile
+ADD CONSTRAINT FK_Profile_User_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
 GO
 
-
-Alter TABLE tbUser 
-add CONSTRAINT FK_UserToProfile FOREIGN KEY (Profile) REFERENCES tbProfiles(Id)
-GO
+ALTER TABLE tbProfile
+ADD CONSTRAINT FK_Profile_User_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id)
 
 CREATE TABLE tbProject(
 	Id int PRIMARY KEY IDENTITY(1,1),
@@ -82,6 +79,7 @@ CREATE TABLE tbMember(
 	CONSTRAINT FK_Member_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
 	
 )
+GO
 
 CREATE TABLE tbTeamMember(
 	Id int PRIMARY KEY IDENTITY(1,1),
@@ -134,4 +132,10 @@ CREATE TABLE tbTask(
 	LastModifiedbyId int, 
 	CONSTRAINT FK_Task_LastModifiedbyId FOREIGN KEY (LastModifiedbyId) REFERENCES tbUser(Id)
 )
+GO
+
+INSERT INTO tbProfile VALUES ('modular', 'Desenvolvedor', GETDATE(), GETDATE(), NULL, NULL)
+GO
+
+INSERT INTO tbUser VALUES ('Igor', 'igor', '123', 'igor@gmail.com', GETDATE(), GETDATE(), 2, NULL, NULL)
 GO

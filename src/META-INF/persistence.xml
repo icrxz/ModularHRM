@@ -6,7 +6,8 @@
 				
         <properties>            
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-            <property name="hibernate.connection.url" value = "jdbc:sqlserver://GABRIEL-TEIXEIR;instanceName=SQLEXPRESS;databaseName=MODULARHRM" />
+
+            <property name="hibernate.connection.url" value = "jdbc:sqlserver://DESKTOP-S9D1C6E;instanceName=SQLEXPRESS;databaseName=MODULARHRM" />
 
             <property name="javax.persistence.jdbc.user" value="sa" />
             <property name="javax.persistence.jdbc.password" value="123456" />

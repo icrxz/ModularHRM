@@ -13,9 +13,6 @@ public class Project extends Basis{
     @Column(name = "CustomerName")
     private String CustomerName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
-    private List<Team> Times = new ArrayList<>();
-
     public String getName() {
         return Name;
     }

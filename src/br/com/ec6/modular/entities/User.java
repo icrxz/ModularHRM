@@ -17,12 +17,6 @@ public class User extends Basis {
     @Column(name = "Email")
     private String Email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Profile")
-    private Profile profile;
-
-    //private List<Member> Members = new ArrayList<>();
-
     public String getName() {
         return Name;
     }

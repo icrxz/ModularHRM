@@ -17,13 +17,14 @@ public class LoginController {
             alert.setContentText(ex.getMessage());
             alert.show();
         }*/
+        Teste();
     }
 
     public void Teste() {
         UsersDAO uDao = new UsersDAO();
-        SingletonUserLogged.UserLogged = (User)uDao.Seleciona(1);
 
-        ProfilesDAO pDao = new ProfilesDAO();
+        SingletonUserLogged.UserLogged = (User) uDao.Seleciona(5);
+
         Profile p = new Profile();
         User u = new User();
         p.setName("Desenvolvedor");
