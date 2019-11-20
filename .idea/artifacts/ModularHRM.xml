@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="ModularHRM">
+    <output-path>$PROJECT_DIR$/out/artifacts/ModularHRM</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="Modular HRM" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="ModularHRM.jar">
+        <element id="module-output" name="ModularHRM" />
+      </element>
+    </root>
+  </artifact>
+</component>

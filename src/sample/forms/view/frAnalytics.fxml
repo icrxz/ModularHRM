@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="422.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.controller.AnalyticsController">
+   <children>
+      <BarChart id="BarChart" layoutX="479.0" layoutY="92.0" prefHeight="281.0" prefWidth="309.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <AreaChart id="AreaChart" layoutX="106.0" layoutY="92.0" prefHeight="281.0" prefWidth="309.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis id="Graphic1" side="LEFT" />
+        </yAxis>
+      </AreaChart>
+      <Label layoutX="121.0" layoutY="75.0" text="Horas Trabalhadas" />
+      <Label layoutX="490.0" layoutY="75.0" text="Tarefas entregues" />
+      <Separator layoutY="50.0" prefHeight="2.0" prefWidth="894.0" />
+      <Label layoutX="194.0" text="DESEMPENHOS DOS PROJETOS">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
