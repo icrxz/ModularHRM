@@ -12,6 +12,8 @@ public class Project extends Basis{
     private String Name;
     @Column(name = "CustomerName")
     private String CustomerName;
+    @Column(name = "ProjectCompleted")
+    private Boolean ProjectCompleted;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "project")
     private List<Team> Teams = new ArrayList<Team>();

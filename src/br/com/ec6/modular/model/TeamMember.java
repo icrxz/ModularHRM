@@ -8,9 +8,6 @@ import java.util.List;
 @Table(name = "tbTeamMember")
 public class TeamMember extends Basis{
 
-    @Column(name = "Name")
-    private String Name;
-
     @ManyToOne
     @JoinColumn(name = "Member")
     private Member member;
@@ -22,13 +19,6 @@ public class TeamMember extends Basis{
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "ResponsibleTeamMember")
     private List<Event> events = new ArrayList<Event>();
 
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
 
     public Member getMember() {
         return member;

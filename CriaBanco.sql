@@ -42,6 +42,7 @@ CREATE TABLE tbProject(
 	CustomerName VARCHAR(100),
 	CreatedDate DATETIME, 
 	LastModifiedDate DATETIME,
+	ProjectCompleted BIT,  
 	CreateById int, 
 	CONSTRAINT FK_Project_CreateById FOREIGN KEY (CreateById) REFERENCES tbUser(Id),
 	LastModifiedbyId int, 
@@ -83,7 +84,6 @@ GO
 
 CREATE TABLE tbTeamMember(
 	Id int PRIMARY KEY IDENTITY(1,1),
-	Name VARCHAR(100),
 	Member int not null, 
 	CONSTRAINT FK_TeamMember_Member FOREIGN KEY (Member) REFERENCES tbMember(Id),
 	Team int not null, 
