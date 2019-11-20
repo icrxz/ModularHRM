@@ -10,11 +10,14 @@ public class SingletonUserLogged {
 
     private SingletonUserLogged(){}
 
-    public int getId(){
-        return UserLogged.getId();
+    public static Integer getId(){
+        if(UserLogged != null)
+            return UserLogged.getId();
+        else
+            return 0;
     }
 
-    public static SingletonUserLogged getUserLogged()
+    public static SingletonUserLogged getInstance()
     {
         if(single_instance == null)
             single_instance = new SingletonUserLogged();

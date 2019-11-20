@@ -2,25 +2,30 @@ package br.com.ec6.modular.dao;
 
 import br.com.ec6.modular.entities.Basis;
 import br.com.ec6.modular.entities.Event;
+import net.bytebuddy.dynamic.scaffold.MethodGraph;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public abstract class BasisDAO <E extends Basis> {
     private String Tabela;
 
-    public final void setTabela(String tabela){
+    protected final void setTabela(String tabela){
         Tabela = tabela;
     }
 
-    public E Seleciona(int id){
+    public E Seleciona(int id, Class c){
         EntityManager manager = getConnection();
         manager.getTransaction().begin();
-        E b = (E) manager.find(Basis.class, id);
+        E b = (E) manager.find(c, id);
+        manager.close();
         return b;
     }
 
@@ -28,25 +33,41 @@ public abstract class BasisDAO <E extends Basis> {
         throw new UnsupportedOperationException("Implementar na classe filha.");
     }
 
-    public List<E> SelecionaTodos(){
-        throw new UnsupportedOperationException("Implementar na classe filha.");
+    public List<E> SelecionaTodos(Class c){
+        String queryStr = "SELECT * FROM " + Tabela;
+        List<E> listObjects = new ArrayList<>();
+        EntityManager manager = getConnection();
+        Query query = manager.createQuery(queryStr);
+
+        listObjects = query.getResultList();
+
+        manager.close();
+
+        return listObjects;
     }
 
     public void Insere(E entidade){
         EntityManager manager = getConnection();
         manager.getTransaction().begin();
-        manager.merge(entidade);
+        manager.persist(entidade);
+        manager.flush();
         manager.getTransaction().commit();
         manager.close();
     }
 
     public void Altera(E entidade){
-        throw new UnsupportedOperationException("Implementar na classe filha.");
+        EntityManager manager = getConnection();
+        manager.getTransaction().begin();
+        manager.merge(entidade);
+        manager.flush();
+        manager.getTransaction().commit();
+        manager.close();
     }
 
     public void Exclui(E entidade){
         EntityManager manager = getConnection();
         manager.getTransaction().begin();
+        manager.remove(entidade);
         manager.getTransaction().commit();
         manager.close();
     }
@@ -55,10 +76,7 @@ public abstract class BasisDAO <E extends Basis> {
         throw new UnsupportedOperationException("Implementar na classe filha.");
     }
 
-    private final EntityManager getConnection(){
-        /*SessionFactory sessionFactory = new MetadataSources(serviceRegistry)
-                .addAnnotatedClass(Basis.class)
-                .addAnnotatedClass(Event.class)*/
+    protected final EntityManager getConnection(){
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("ModularHRM");
         EntityManager manager = factory.createEntityManager();

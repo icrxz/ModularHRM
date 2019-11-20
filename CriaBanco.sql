@@ -6,8 +6,8 @@ GO
 
 CREATE TABLE tbProfile(
 	Id int PRIMARY KEY IDENTITY(1,1),
-	Name VARCHAR(100),
-	PermissionLevel VARCHAR(100),
+	Name VARCHAR(100) NOT NULL,
+	PermissionLevel VARCHAR(100) NOT NULL,
 	CreatedDate DATETIME, 
 	LastModifiedDate DATETIME,
 	CreateById int,
@@ -18,9 +18,9 @@ GO
 CREATE TABLE tbUser(
 	Id int PRIMARY KEY IDENTITY(1,1),
 	Name VARCHAR(100),
-	UserName VARCHAR(100),
-	Password VARCHAR(100),
-	Email VARCHAR(100),
+	UserName VARCHAR(100) UNIQUE NOT NULL,
+	Password VARCHAR(100) NOT NULL,
+	Email VARCHAR(100) UNIQUE NOT NULL,
 	CreatedDate DATETIME, 
 	LastModifiedDate DATETIME,
 	Profile int not null,
@@ -99,8 +99,8 @@ GO
 
 CREATE TABLE tbEvent(
 	Id int PRIMARY KEY IDENTITY(1,1),
-	Name VARCHAR(100),
-	Description VARCHAR(100),
+	Name VARCHAR(100) NOT NULL,
+	Description VARCHAR(100) NOT NULL,
 	Date Datetime,
 	Location VARCHAR(100),
 	Type VARCHAR(100),

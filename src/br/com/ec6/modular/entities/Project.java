@@ -13,6 +13,9 @@ public class Project extends Basis{
     @Column(name = "CustomerName")
     private String CustomerName;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
+    private List<Team> Teams = new ArrayList<Team>();
+
     public String getName() {
         return Name;
     }
@@ -27,5 +30,13 @@ public class Project extends Basis{
 
     public void setCustomerName(String customerName) {
         CustomerName = customerName;
+    }
+
+    public List<Team> getTeams() {
+        return Teams;
+    }
+
+    public void setTeams(List<Team> teams) {
+        Teams = teams;
     }
 }

@@ -1,5 +1,7 @@
 package br.com.ec6.modular.entities;
 
+import sun.nio.cs.US_ASCII;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,9 @@ public class Profile extends Basis{
 
     @Column(name = "PermissionLevel")
     private String PermissionLevel;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "profile")
+    private List<User> Users = new ArrayList<User>();
 
     public String getName() {
         return Name;

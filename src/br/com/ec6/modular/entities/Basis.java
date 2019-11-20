@@ -11,13 +11,23 @@ public abstract class Basis {
     public Basis(){
         setCreatedDate(LocalDateTime.now());
         setLastModifiedDate(LocalDateTime.now());
-        //setCreateById(SingletonUserLogged.getUserLogged().getId());
-        //setLastModifiedbyId(SingletonUserLogged.getUserLogged().getId());
+
+        Integer usId = SingletonUserLogged.getInstance().getId();
+
+        if (usId == null || usId == 0) {
+            setCreateById(1);
+            setLastModifiedbyId(1);
+        }
+        else{
+            setCreateById(usId);
+            setLastModifiedbyId(usId);
+        }
+
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private Integer Id;
 
     @Column(name="CreatedDate")
     private LocalDateTime CreatedDate;
@@ -26,16 +36,16 @@ public abstract class Basis {
     private LocalDateTime LastModifiedDate;
 
     @Column(name = "CreateById")
-    private int CreateById;
+    private Integer CreateById;
 
     @Column(name = "LastModifiedbyId")
-    private int LastModifiedbyId;
+    private Integer LastModifiedbyId;
 
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    private void setId(Integer id) {
         Id = id;
     }
 
@@ -43,7 +53,7 @@ public abstract class Basis {
         return CreatedDate;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
+    private void setCreatedDate(LocalDateTime createdDate) {
         CreatedDate = createdDate;
     }
 
@@ -59,7 +69,7 @@ public abstract class Basis {
         return CreateById;
     }
 
-    public void setCreateById(int createById) {
+    private void setCreateById(int createById) {
         CreateById = createById;
     }
 

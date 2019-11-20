@@ -17,6 +17,18 @@ public class User extends Basis {
     @Column(name = "Email")
     private String Email;
 
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "Profile")
+    private Profile profile;
+
     public String getName() {
         return Name;
     }

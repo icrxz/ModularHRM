@@ -1,21 +1,27 @@
-<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
-  version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
   <persistence-unit name="ModularHRM" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-				
-        <properties>            
+
+      <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+        <properties>
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 
-            <property name="hibernate.connection.url" value = "jdbc:sqlserver://DESKTOP-S9D1C6E;instanceName=SQLEXPRESS;databaseName=MODULARHRM" />
+            <property name="hibernate.connection.url" value = "jdbc:sqlserver://DESKTOP-S9D1C6E;databaseName=ModularHRM" />
 
             <property name="javax.persistence.jdbc.user" value="sa" />
             <property name="javax.persistence.jdbc.password" value="123456" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
-              
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+
             <property name="show_sql" value="true" />
             <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
-			<property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
         </properties>
     </persistence-unit>

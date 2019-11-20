@@ -1,8 +1,8 @@
 package br.com.ec6.modular.dao;
 
-public class ProfilesDAO extends BasisDAO {
+public class ProjectDAO extends BasisDAO{
 
-    public ProfilesDAO(){
+    public ProjectDAO(){
         setTabela("Profiles");
     }
 }
