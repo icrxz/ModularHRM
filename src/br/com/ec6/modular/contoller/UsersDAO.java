@@ -3,7 +3,6 @@ package br.com.ec6.modular.contoller;
 import br.com.ec6.modular.model.User;
 
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;

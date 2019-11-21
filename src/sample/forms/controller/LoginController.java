@@ -1,13 +1,9 @@
 package sample.forms.controller;
 
-import br.com.ec6.modular.contoller.ProfileDAO;
 import br.com.ec6.modular.contoller.UsersDAO;
-import br.com.ec6.modular.model.Profile;
-import br.com.ec6.modular.model.User;
 import br.com.ec6.modular.global.SingletonUserLogged;
+import br.com.ec6.modular.model.User;
 import javafx.fxml.FXML;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -16,7 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import sample.Main;
+import sample.Screens;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,12 +25,11 @@ public class LoginController implements Initializable {
     private TextField txtLogin;
     @FXML
     private TextField txtSenha;
+    private Stage janela;
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        Main.stage.setResizable(false);
-        Main.stage.setMaximized(false);
-        Main.stage.setTitle("Modular HRM - Login");
+
 
 
         btnEntrar.setOnMouseClicked((MouseEvent e) -> {
@@ -59,8 +54,7 @@ public class LoginController implements Initializable {
 
                 SingletonUserLogged sul = SingletonUserLogged.getInstance();
                 sul.UserLogged = u;
-                Main p = new Main();
-                fechaLogin();
+                Screens p = new Screens();
                 p.setScreen("forms/view/frMenu.fxml");
                 p.start(new Stage());
             }else {
@@ -75,10 +69,6 @@ public class LoginController implements Initializable {
             alert.setContentText(ex.getMessage());
             alert.show();
         }
-    }
-
-    public void fechaLogin() {
-        Main.stage.close();
     }
 
 }

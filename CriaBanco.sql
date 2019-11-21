@@ -137,5 +137,5 @@ GO
 INSERT INTO tbProfile VALUES ('modular', 'Desenvolvedor', GETDATE(), GETDATE(), NULL, NULL)
 GO
 
-INSERT INTO tbUser VALUES ('Igor', 'igor', '123', 'igor@gmail.com', GETDATE(), GETDATE(), 2, NULL, NULL)
+INSERT INTO tbUser VALUES ('Igor', 'igor', '123', 'igor@gmail.com', GETDATE(), GETDATE(), 1, NULL, NULL)
 GO

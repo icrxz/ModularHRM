@@ -1,65 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
+<?import java.lang.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.effect.Blend?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="FrMenu" prefHeight="553.0" prefWidth="879.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.controller.MenuController">
-   <children>
-      <SplitPane dividerPositions="0.24259681093394078" prefHeight="544.0" prefWidth="878.0" styleClass="background" stylesheets="@DarkTheme.css">
+<AnchorPane prefHeight="553.0" prefWidth="879.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.controller.MenuController">
+  <children>
+      <SplitPane dividerPositions="0.2305194805194805" prefHeight="554.0" prefWidth="924.0" styleClass="background" stylesheets="@DarkTheme.css">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="588.0" prefWidth="212.0">
+            <AnchorPane SplitPane.resizableWithParent="false">
                <children>
-                  <Pane prefHeight="533.0" prefWidth="210.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Label id="LoggedUserName}" fx:id="btnUserName" layoutX="48.0" layoutY="29.0" text="{LoggedUserName}" />
-                        <Label id="UserLoggedCargo}" fx:id="btnUserCargo" layoutX="48.0" layoutY="80.0" text="{UserLoggedCargo}" />
-                        <Label layoutX="74.0" layoutY="140.0" text="Descricao" />
-                        <Label id="Descricao" fx:id="btnDescricao" layoutX="71.0" layoutY="195.0" text="{Descricao}" textAlignment="CENTER" />
-                     </children>
-                  </Pane>
+                  <SplitPane dividerPositions="0.17753623188405798" orientation="VERTICAL" prefHeight="553.0" prefWidth="210.0" styleClass="background">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
+                           <children>
+                              <Label fx:id="lblUser" layoutX="14.0" layoutY="14.0" text="{LoggedUserName}" />
+                              <Label fx:id="lblCargo" layoutX="14.0" layoutY="48.0" text="{UserLoggedCargo}" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
+                           <children>
+                              <Label layoutX="14.0" styleClass="label-header" text="Descrição" />
+                              <Text fx:id="lblDesc" fill="#aeaeae" layoutX="14.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-bright" wrappingWidth="182.0" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="588.0" prefWidth="661.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="588.0" prefWidth="661.0" SplitPane.resizableWithParent="false">
                <children>
-                  <SplitPane dividerPositions="0.17863720073664824" orientation="VERTICAL" prefHeight="544.0" prefWidth="659.0" styleClass="background" stylesheets="@DarkTheme.css">
+                  <SplitPane dividerPositions="0.17863720073664824" orientation="VERTICAL" prefHeight="553.0" prefWidth="708.0" styleClass="background" stylesheets="@DarkTheme.css">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="94.0" prefWidth="768.0" SplitPane.resizableWithParent="false">
                            <children>
-                              <Pane prefHeight="98.0" prefWidth="688.0">
+                              <Pane prefHeight="98.0" prefWidth="708.0">
                                  <children>
                                     <Label layoutX="143.0" layoutY="14.0" text="Resumo 1" />
                                     <Label layoutX="499.0" layoutY="14.0" text="Resumo 2" />
-                                    <Label id="Resumo1" fx:id="btnResumo1" layoutX="143.0" layoutY="49.0" text="{Resumo1}" />
-                                    <Label id="Resumo2" fx:id="btnResumo2" layoutX="499.0" layoutY="49.0" text="{Resumo2}" />
+                                    <Label fx:id="lblResumo1" layoutX="143.0" layoutY="49.0" text="{Resumo1}" />
+                                    <Label fx:id="lblResumo2" layoutX="499.0" layoutY="49.0" text="{Resumo2}" />
                                  </children>
                               </Pane>
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="422.0" prefWidth="659.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="422.0" prefWidth="659.0" SplitPane.resizableWithParent="false">
                            <children>
-                              <Pane cacheHint="QUALITY" depthTest="ENABLE" layoutY="25.0" prefHeight="443.0" prefWidth="659.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <Pane cacheHint="QUALITY" depthTest="ENABLE" layoutY="25.0" prefHeight="443.0" prefWidth="679.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-20.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button id="btnAgenda" fx:id="btnAgenda" layoutX="7.0" layoutY="19.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" text="Agenda">
+                                    <Button id="btnAgenda" fx:id="btnAgenda" layoutX="29.0" layoutY="29.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" text="Agenda">
                                        <font>
                                           <Font size="72.0" />
                                        </font>
                                     </Button>
-                                    <Button id="btnAnalytics" fx:id="btnAnalytics" layoutX="335.0" layoutY="19.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" text="Analytics">
+                                    <Button id="btnAnalytics" fx:id="btnAnalytics" layoutX="357.0" layoutY="29.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" text="Analytics">
                                        <font>
                                           <Font name="Bell MT Bold" size="36.0" />
                                        </font>
                                     </Button>
-                                    <Button id="btnTarefas" fx:id="btnTarefas" layoutX="7.0" layoutY="222.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" text="Tarefas">
+                                    <Button id="btnTarefas" fx:id="btnTarefas" layoutX="29.0" layoutY="232.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" text="Tarefas">
                                        <font>
                                           <Font name="Bell MT Bold" size="36.0" />
                                        </font>
                                     </Button>
-                                    <Button id="btnConfigur" fx:id="btnConfigur" layoutX="335.0" layoutY="221.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" text="Configurações">
+                                    <Button id="btnConfigur" fx:id="btnConfig" layoutX="357.0" layoutY="231.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" text="Configurações">
                                        <font>
                                           <Font size="36.0" />
                                        </font>

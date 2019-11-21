@@ -8,26 +8,21 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public static Stage stage;
-    private String Screen = "forms/view/frLogin.fxml";
-
-    public String getScreen() {
-        return Screen;
-    }
-
-    public void setScreen(String screen) {
-        Screen = screen;
-    }
-
     @Override
     public void start(Stage primaryStage) throws Exception{
-        this.stage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource(getScreen()));
+        Parent root = FXMLLoader.load(getClass().getResource("forms/view/frLogin.fxml"));
 
         Scene scene = new Scene(root);
 
-        stage.setScene(scene);
-        stage.show();
+        primaryStage.setResizable(false);
+        primaryStage.setMaximized(false);
+        primaryStage.setTitle("Modular HRM - Login");
+        primaryStage.setScene(scene);
+        /*primaryStage.setOnCloseRequest(e -> {
+            e.consume();
+            primaryStage.setIconified(true);
+        });*/
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
