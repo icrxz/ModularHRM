@@ -1,6 +1,8 @@
 package sample.forms.controller;
 
 import br.com.ec6.modular.global.SingletonUserLogged;
+import br.com.ec6.modular.model.Event;
+import br.com.ec6.modular.model.Task;
 import br.com.ec6.modular.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import sample.Main;
 import sample.Screens;
 
 import java.net.URL;
@@ -41,6 +44,7 @@ public class MenuController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         janela = Screens.stage;
+
         Screens.stage.setResizable(false);
         Screens.stage.setMaximized(false);
         Screens.stage.setTitle("Modular HRM - Menu Principal");
@@ -57,7 +61,7 @@ public class MenuController implements Initializable {
             this.lblDesc.setText("");
         });
         this.btnAgenda.setOnMouseClicked((MouseEvent e) -> {
-            ExecutaTela("forms/view/frAgenda.fxml");
+            ExecutaTela("forms/view/frMenuTasks.fxml", null);
         });
 
         this.btnAnalytics.setOnMouseEntered((MouseEvent e) -> {
@@ -67,7 +71,7 @@ public class MenuController implements Initializable {
             this.lblDesc.setText("");
         });
         this.btnAnalytics.setOnMouseClicked((MouseEvent e) -> {
-            ExecutaTela("forms/view/frAnalytics.fxml");
+            ExecutaTela("forms/view/frAnalytics.fxml", null);
         });
 
         this.btnConfig.setOnMouseEntered((MouseEvent e) -> {
@@ -77,7 +81,7 @@ public class MenuController implements Initializable {
             this.lblDesc.setText("");
         });
         this.btnConfig.setOnMouseClicked((MouseEvent e) -> {
-            ExecutaTela("forms/view/frConfig.fxml");
+            ExecutaTela("forms/view/frConfig.fxml", null);
         });
 
         this.btnTarefas.setOnMouseEntered((MouseEvent e) -> {
@@ -87,16 +91,16 @@ public class MenuController implements Initializable {
             this.lblDesc.setText("");
         });
         this.btnTarefas.setOnMouseClicked((MouseEvent e) -> {
-            ExecutaTela("forms/view/frCRUD.fxml");
+            ExecutaTela("forms/view/frCRUD.fxml", Task.class);
         });
-
     }
 
-    public void ExecutaTela(String screen) {
+    public void ExecutaTela(String screen, Class c) {
         try {
             Screens p = new Screens();
-            janela.hide();
+            p.classe = c;
             p.setScreen(screen);
+            janela.hide();
             p.start(new Stage());
             janela.show();
         } catch (Exception ex) {

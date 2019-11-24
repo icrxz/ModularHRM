@@ -32,7 +32,9 @@ public class CRUDTeamController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Screens.stage.setResizable(false);
         Screens.stage.setMaximized(false);
-        Screens.stage.setTitle("Modular HRM - Times");
+        Screens.stage.setTitle("Modular HRM - Time");
+
+        txtTime.requestFocus();
 
         CarregaProjetos();
 
@@ -70,9 +72,18 @@ public class CRUDTeamController implements Initializable {
             Team t = new Team();
             TeamDAO tDao = new TeamDAO();
 
-            t.setName(txtTime.getText().trim());
-            if (cbProjeto.getItems().size() > 0)
-                t.setProject((Project) cbProjeto.getValue());
+            String name = txtTime.getText().trim();
+
+            if(name.length() > 0)
+                t.setName(name);
+            else
+                throw new Exception("Digite um nome para o projeto!");
+
+            if (cbProjeto.getItems() != null)
+                t.setProject(cbProjeto.getValue());
+            else
+                throw new Exception("Selecione um projeto!");
+
             t.setManager(SingletonUserLogged.UserLogged);
 
             tDao.Insere(t);

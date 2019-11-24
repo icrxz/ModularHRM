@@ -1,5 +1,6 @@
 package sample.forms.controller;
 
+import br.com.ec6.modular.model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -34,29 +35,30 @@ public class ConfigController implements Initializable {
         Screens.stage.setTitle("Modular HRM - Configuração");
 
         this.btnTimes.setOnMouseClicked((MouseEvent e) -> {
-            ExecutaTela("forms/view/FrCRUDTeam.fxml");
+            ExecutaTela("forms/view/frCRUD.fxml", Team.class);
         });
 
         this.btnProjetos.setOnMouseClicked((MouseEvent e) -> {
-            ExecutaTela("forms/view/FrCRUDProject.fxml");
+            ExecutaTela("forms/view/frCRUD.fxml", Project.class);
         });
 
         this.btnMembrosTime.setOnMouseClicked((MouseEvent e) -> {
-            ExecutaTela("forms/view/frCRUDTeamMember.fxml");
+            ExecutaTela("forms/view/frCRUDTeamMember.fxml", TeamMember.class);
         });
 
         this.btnMembros.setOnMouseClicked((MouseEvent e) -> {
-            ExecutaTela("frCRUD.fxml");
+            ExecutaTela("forms/view/frCRUD.fxml", Member.class);
         });
 
         this.btnUsuarios.setOnMouseClicked((MouseEvent e) -> {
-            ExecutaTela("forms/view/frCRUD.fxml");
+            ExecutaTela("forms/view/frCRUD.fxml", User.class);
         });
     }
 
-    public void ExecutaTela(String screen) {
+    public void ExecutaTela(String screen, Class c) {
         try {
             Screens p = new Screens();
+            p.classe = c;
             p.setScreen(screen);
             p.start(new Stage());
         } catch (Exception ex) {

@@ -33,4 +33,8 @@ public class Profile extends Basis{
         PermissionLevel = permissionLevel;
     }
 
+    @Override
+    public String toString(){
+        return getName();
+    }
 }

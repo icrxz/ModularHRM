@@ -53,4 +53,9 @@ public class Team extends Basis{
     public void setTeamMembers(List<TeamMember> teamMembers) {
         this.teamMembers = teamMembers;
     }
+
+    @Override
+    public String toString() {
+        return getName() + " - " + getProject().getName();
+    }
 }

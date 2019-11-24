@@ -31,26 +31,17 @@ public abstract class BasisDAO <E extends Basis> {
         throw new UnsupportedOperationException("Implementar na classe filha.");
     }
 
-    public List<E> SelecionaTodos(Class cls){
-        /*String queryStr = "SELECT * FROM " + Tabela;
-        List<E> listObjects = new ArrayList<>();
-        EntityManager manager = getConnection();
-        Query query = manager.createQuery(queryStr);
-
-        listObjects = query.getResultList();
-
-        manager.close();
-
-        return listObjects;*/
-
+    public List<Basis> SelecionaTodos(Class cls){
         EntityManager em = getConnection();
                 try{
                     CriteriaBuilder cb = em.getCriteriaBuilder();
 
-                    CriteriaQuery<E> q = cb.createQuery(cls);
+                    CriteriaQuery<Basis> q = cb.createQuery(cls);
+                    Root<Basis> root = q.from(cls);
+                    q.select(root);
 
-                    TypedQuery<E> query = em.createQuery(q);
-                    List<E> results = query.getResultList();
+                    TypedQuery<Basis> query = em.createQuery(q);
+                    List<Basis> results = query.getResultList();
 
                     return results;
                 }

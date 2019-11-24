@@ -2,6 +2,8 @@ package br.com.ec6.modular.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tbEvent")
@@ -21,6 +23,9 @@ public class Event extends Basis {
     @ManyToOne
     @JoinColumn(name = "ResponsibleTeamMember")
     private TeamMember ResponsibleTeamMember;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "RelatedEvent")
+    private List<Task> Tarefas = new ArrayList<>();
 
     public String getName() {
         return Name;
@@ -68,6 +73,19 @@ public class Event extends Basis {
 
     public void setResponsibleTeamMember(TeamMember responsibleTeamMember) {
         ResponsibleTeamMember = responsibleTeamMember;
+    }
+
+    public List<Task> getTarefas() {
+        return Tarefas;
+    }
+
+    public void setTarefas(List<Task> tarefas) {
+        Tarefas = tarefas;
+    }
+
+    @Override
+    public String toString(){
+        return getName() + " - " + getDate().toString();
     }
 
 }

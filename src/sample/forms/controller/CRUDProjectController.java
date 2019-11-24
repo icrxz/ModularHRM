@@ -27,7 +27,7 @@ public class CRUDProjectController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Screens.stage.setResizable(false);
         Screens.stage.setMaximized(false);
-        Screens.stage.setTitle("Modular HRM - CRUD Projeto");
+        Screens.stage.setTitle("Modular HRM - Projeto");
 
         this.btnCriarProjeto.setOnMouseClicked((MouseEvent e) -> {
             CriarProjeto();

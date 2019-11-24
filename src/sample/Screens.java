@@ -10,6 +10,7 @@ public class Screens extends Application {
 
     public static Stage stage;
     private String Screen = "forms/view/frLogin.fxml";
+    public static Class classe;
 
     public String getScreen() {
         return Screen;
@@ -18,6 +19,8 @@ public class Screens extends Application {
     public void setScreen(String screen) {
         Screen = screen;
     }
+
+    public Scene scene;
 
     public static void main(String[] args) {
         launch(args);
@@ -28,9 +31,10 @@ public class Screens extends Application {
         this.stage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource(getScreen()));
 
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
 
         stage.setScene(scene);
+        stage.toFront();
         stage.showAndWait();
     }
 }
