@@ -54,7 +54,7 @@ public class CreateUserController implements Initializable {
         });
 
         this.btnCancelar.setOnMouseClicked((MouseEvent e) -> {
-
+            Screens.stage.close();
         });
     }
 
@@ -99,7 +99,8 @@ public class CreateUserController implements Initializable {
 
             uDAO.Insere(user);
 
-            MostraAlerta("Usuário incluído com sucesso!");
+            MostraAlerta("Usuário cadastrado com sucesso!");
+            Screens.stage.close();
         }catch(Exception ex){
             MostraAlerta(ex.getMessage());
         }
@@ -109,8 +110,8 @@ public class CreateUserController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Aviso!");
         alert.setContentText(message);
-        alert.showAndWait();
         alert.getDialogPane().requestFocus();
         alert.getDialogPane().toFront();
+        alert.showAndWait();
     }
 }

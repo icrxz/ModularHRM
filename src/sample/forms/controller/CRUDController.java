@@ -252,6 +252,26 @@ public class CRUDController implements Initializable {
 
             tbData.getColumns().addAll(clMember, clTeam);
         }
+        else if(classe == Profile.class){
+            ProfileDAO pDAO = new ProfileDAO();
+            lblObjectName.setText("Perfis");
+            path = "forms/view/frCreateProfile.fxml";
+            obserList = FXCollections.observableList(pDAO.SelecionaTodos(Profile.class));
+
+            TableColumn<Profile, String> clProfileName = new TableColumn<>("Nome");
+            clProfileName.setCellValueFactory(f -> new ReadOnlyStringWrapper(f.getValue().getName()));
+            clProfileName.setMinWidth(100.0);
+            clProfileName.setResizable(true);
+            clProfileName.setEditable(false);
+
+            TableColumn<Profile, String> clProfilePermission = new TableColumn<>("Permissão");
+            clProfilePermission.setCellValueFactory(f -> new ReadOnlyStringWrapper(f.getValue().getPermissionLevel()));
+            clProfilePermission.setMinWidth(100.0);
+            clProfilePermission.setResizable(true);
+            clProfilePermission.setEditable(false);
+
+            tbData.getColumns().addAll(clProfileName, clProfilePermission);
+        }
         else if(classe == User.class){
             UsersDAO uDAO = new UsersDAO();
             lblObjectName.setText("Usuario");
@@ -286,13 +306,14 @@ public class CRUDController implements Initializable {
         }
 
         tbData.getColumns().add(clLastModifiedDate);
+
         if(obserList.size() > 0)
             tbData.setItems(obserList);
         else{
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Aviso!");
             alert.setContentText("Essa tabela não possui registros!");
-            alert.show();
+            alert.showAndWait();
             alert.getDialogPane().requestFocus();
             alert.getDialogPane().toFront();
         }

@@ -50,7 +50,7 @@ public class CreateTaskContoller implements Initializable {
         });
 
         this.btnCancelar.setOnMouseClicked((MouseEvent e) -> {
-
+            Screens.stage.close();
         });
     }
 
@@ -76,7 +76,7 @@ public class CreateTaskContoller implements Initializable {
             tDAO.Insere(task);
 
             MostraAlerta("Tarefa cadastrada com sucesso!");
-
+            Screens.stage.close();
         }catch (Exception ex){
             MostraAlerta(ex.getMessage());
         }
@@ -97,8 +97,8 @@ public class CreateTaskContoller implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Aviso!");
         alert.setContentText(message);
-        alert.showAndWait();
         alert.getDialogPane().requestFocus();
         alert.getDialogPane().toFront();
+        alert.showAndWait();
     }
 }

@@ -59,7 +59,8 @@ public class CRUDTeamMemberController implements Initializable {
 
             tDAO.Insere(teamMember);
 
-            MostraAlerta("Membro incluído com sucesso!");
+            MostraAlerta("Membro do time incluído com sucesso!");
+            Screens.stage.close();
         }catch(Exception ex){
             MostraAlerta(ex.getMessage());
         }
@@ -98,8 +99,8 @@ public class CRUDTeamMemberController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Aviso!");
         alert.setContentText(message);
-        alert.showAndWait();
         alert.getDialogPane().requestFocus();
         alert.getDialogPane().toFront();
+        alert.showAndWait();
     }
 }

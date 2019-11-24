@@ -7,11 +7,11 @@
 
 <AnchorPane prefHeight="367.0" prefWidth="391.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.controller.CRUDTeamMemberController">
    <children>
-      <Label layoutX="69.0" layoutY="31.0" styleClass="label-header" text="Membro Time" />
+      <Label layoutX="35.0" layoutY="30.0" styleClass="label-header" text="Membro do time" />
       <Label layoutX="120.0" layoutY="116.0" text="Membro" />
-      <Label layoutX="120.0" layoutY="185.0" text="Time" />
-      <Button fx:id="btnCriarMembro" layoutX="148.0" layoutY="265.0" mnemonicParsing="false" text="Criar" />
       <ComboBox fx:id="cbMembro" layoutX="120.0" layoutY="137.0" prefWidth="150.0" />
+      <Label layoutX="120.0" layoutY="185.0" text="Time" />
       <ComboBox fx:id="cbTime" layoutX="120.0" layoutY="206.0" prefWidth="150.0" />
+      <Button fx:id="btnCriarMembro" layoutX="148.0" layoutY="265.0" mnemonicParsing="false" text="Criar" />
    </children>
 </AnchorPane>

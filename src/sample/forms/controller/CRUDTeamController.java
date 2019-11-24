@@ -92,6 +92,7 @@ public class CRUDTeamController implements Initializable {
             alert.setTitle("Sucesso!");
             alert.setContentText(("Time cadastrado com sucesso!"));
             alert.showAndWait();
+            Screens.stage.close();
         }
         catch(Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);

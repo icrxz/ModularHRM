@@ -13,36 +13,31 @@
             <Font name="System Bold" size="72.0" />
          </font>
       </Label>
-      <TextField id="txtUser" fx:id="txtNome" layoutX="62.0" layoutY="115.0" prefWidth="280.0" promptText="Nome" />
-      <TextField id="txtEmail" fx:id="txtEmail" layoutX="62.0" layoutY="255.0" prefHeight="37.0" prefWidth="280.0" promptText="Email" />
       <Label layoutX="62.0" layoutY="95.0" text="Nome:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="109.0" layoutY="165.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="62.0" layoutY="235.0" text="Email:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button id="btnCriarUser" fx:id="btnCriarMembro" layoutX="68.0" layoutY="418.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="104.0" text="Criar" />
-      <Button id="btnCanceluser" fx:id="btnCancelar" layoutX="247.0" layoutY="418.0" mnemonicParsing="false" text="Cancelar" />
+      <TextField id="txtUser" fx:id="txtNome" layoutX="62.0" layoutY="115.0" prefWidth="280.0" promptText="Nome" />
       <Label layoutX="62.0" layoutY="165.0" text="Cargo:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <TextField id="txtUser" fx:id="txtCargo" layoutX="62.0" layoutY="185.0" prefWidth="280.0" promptText="Cargo" />
+      <Label layoutX="62.0" layoutY="235.0" text="Email:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField id="txtEmail" fx:id="txtEmail" layoutX="62.0" layoutY="255.0" prefHeight="37.0" prefWidth="280.0" promptText="Email" />
       <Label layoutX="63.0" layoutY="305.0" text="Telefone:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <TextField id="txtEmail" fx:id="txtPhone" layoutX="62.0" layoutY="325.0" prefHeight="37.0" prefWidth="280.0" promptText="Telefone" />
+      <Button id="btnCriarUser" fx:id="btnCriarMembro" layoutX="68.0" layoutY="418.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="104.0" text="Criar" />
+      <Button id="btnCanceluser" fx:id="btnCancelar" layoutX="247.0" layoutY="418.0" mnemonicParsing="false" text="Cancelar" />
    </children>
 </AnchorPane>

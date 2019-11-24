@@ -59,12 +59,14 @@ public class CRUDProjectController implements Initializable {
             alert.setTitle("Sucesso!");
             alert.setContentText(("Projeto cadastrado com sucesso!"));
             alert.showAndWait();
+
+            Screens.stage.close();
         }
         catch(Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro!");
             alert.setContentText(ex.getMessage());
-            alert.show();
+            alert.showAndWait();
         }
     }
 }

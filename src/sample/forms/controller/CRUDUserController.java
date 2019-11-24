@@ -11,6 +11,6 @@ public class CRUDUserController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Screens.stage.setResizable(false);
         Screens.stage.setMaximized(false);
-        Screens.stage.setTitle("Modular HRM - CRUD Usuário");
+        Screens.stage.setTitle("Modular HRM - Usuário");
     }
 }

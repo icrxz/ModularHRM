@@ -26,6 +26,8 @@ public class ConfigController implements Initializable {
     private Button btnTimes;
     @FXML
     private Button btnUsuarios;
+    @FXML
+    private Button btnPerfil;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -52,6 +54,10 @@ public class ConfigController implements Initializable {
 
         this.btnUsuarios.setOnMouseClicked((MouseEvent e) -> {
             ExecutaTela("forms/view/frCRUD.fxml", User.class);
+        });
+
+        this.btnPerfil.setOnMouseClicked((MouseEvent e) -> {
+            ExecutaTela("forms/view/frCRUD.fxml", Profile.class);
         });
     }
 

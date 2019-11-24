@@ -8,10 +8,10 @@
 <AnchorPane prefHeight="343.0" prefWidth="296.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.controller.CRUDTeamController">
    <children>
       <Label layoutX="95.0" layoutY="14.0" styleClass="label-header" text="Time" />
+      <Label layoutX="52.0" layoutY="84.0" text="Nome do Time" />
+      <TextField fx:id="txtTime" layoutX="53.0" layoutY="105.0" promptText="Time" />
       <Label layoutX="53.0" layoutY="161.0" text="Projeto" />
       <ComboBox fx:id="cbProjeto" layoutX="53.0" layoutY="182.0" prefHeight="37.0" prefWidth="200.0" />
-      <Label layoutX="52.0" layoutY="84.0" text="Nome do Time" />
       <Button fx:id="btnCriarTime" layoutX="84.0" layoutY="260.0" mnemonicParsing="false" text="Criar Time" />
-      <TextField fx:id="txtTime" layoutX="53.0" layoutY="105.0" promptText="Time" />
    </children>
 </AnchorPane>

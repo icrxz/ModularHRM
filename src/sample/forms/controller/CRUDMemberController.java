@@ -37,6 +37,11 @@ public class CRUDMemberController implements Initializable {
         this.btnCriarMembro.setOnMouseClicked((MouseEvent e) -> {
             AdicionaMembro();
         });
+
+        this.btnCancelar.setOnMouseClicked((MouseEvent e) -> {
+            Screens.stage.close();
+        });
+
     }
 
     private void AdicionaMembro(){
@@ -68,7 +73,8 @@ public class CRUDMemberController implements Initializable {
 
             mDAO.Insere(member);
 
-            MostraAlerta("Membro incluído com sucesso!");
+            MostraAlerta("Membro cadastrado com sucesso!");
+            Screens.stage.close();
         }catch(Exception ex){
             MostraAlerta(ex.getMessage());
         }
@@ -78,8 +84,8 @@ public class CRUDMemberController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Aviso!");
         alert.setContentText(message);
-        alert.showAndWait();
         alert.getDialogPane().requestFocus();
         alert.getDialogPane().toFront();
+        alert.showAndWait();
     }
 }
