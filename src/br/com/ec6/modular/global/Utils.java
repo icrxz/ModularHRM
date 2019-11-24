@@ -28,7 +28,7 @@ public class Utils {
         body = "Teste";
         sendEmail(emailTo, body, subject);
     }
-    public static void sendEmail(String toEmail, String body, String subject){
+    private static void sendEmail(String toEmail, String body, String subject){
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.socketFactory.port", "465");
@@ -40,7 +40,7 @@ public class Utils {
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication()
                     {
-                        return new PasswordAuthentication("ModularSolutions7@gmail.com",
+                        return new PasswordAuthentication("modularsolutions7@gmail.com",
                                 "Modular123");
                     }
                 });
@@ -50,7 +50,7 @@ public class Utils {
         try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("ModularSolutions7@gmail.com"));
+            message.setFrom(new InternetAddress("modularsolutions7@gmail.com"));
 
             message.setRecipients(Message.RecipientType.TO,  InternetAddress.parse(toEmail));
             message.setSubject(subject);

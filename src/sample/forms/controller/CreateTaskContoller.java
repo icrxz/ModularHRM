@@ -4,6 +4,7 @@ import br.com.ec6.modular.contoller.EventDAO;
 import br.com.ec6.modular.contoller.MemberDAO;
 import br.com.ec6.modular.contoller.TaskDAO;
 import br.com.ec6.modular.contoller.TeamMemberDAO;
+import br.com.ec6.modular.global.Utils;
 import br.com.ec6.modular.model.Event;
 import br.com.ec6.modular.model.Member;
 import br.com.ec6.modular.model.Task;
@@ -75,6 +76,7 @@ public class CreateTaskContoller implements Initializable {
 
             tDAO.Insere(task);
 
+            Utils.sendEmailNotification(membro.getMember().getEmail(), task);
             MostraAlerta("Tarefa cadastrada com sucesso!");
             Screens.stage.close();
         }catch (Exception ex){

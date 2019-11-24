@@ -20,12 +20,11 @@ import java.util.ResourceBundle;
 
 public class CRUDController implements Initializable {
     private String path;
+    private String pathEdit;
     private Class classe;
 
     @FXML
     private TableView tbData;
-    @FXML
-    private TableColumn clId;
     @FXML
     private Label lblObjectName;
     @FXML
