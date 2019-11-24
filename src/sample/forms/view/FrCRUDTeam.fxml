@@ -12,6 +12,6 @@
       <TextField fx:id="txtTime" layoutX="53.0" layoutY="105.0" promptText="Time" />
       <Label layoutX="53.0" layoutY="161.0" text="Projeto" />
       <ComboBox fx:id="cbProjeto" layoutX="53.0" layoutY="182.0" prefHeight="37.0" prefWidth="200.0" />
-      <Button fx:id="btnCriarTime" layoutX="84.0" layoutY="260.0" mnemonicParsing="false" text="Criar Time" />
+      <Button fx:id="btnCriarTime" layoutX="91.0" layoutY="260.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="114.0" text="Criar" />
    </children>
 </AnchorPane>

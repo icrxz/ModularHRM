@@ -5,16 +5,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="506.0" prefWidth="374.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.controller.ConfigController">
+<AnchorPane prefHeight="443.0" prefWidth="374.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.controller.ConfigController">
    <children>
       <Label layoutX="50.0" layoutY="14.0" styleClass="label-header" text="Configurações" />
-      <Button fx:id="btnTimes" layoutX="105.0" layoutY="100.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" text="Times" />
-      <Button fx:id="btnUsuarios" layoutX="105.0" layoutY="150.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" text="Usuarios" />
-      <Button fx:id="btnProjetos" layoutX="105.0" layoutY="200.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" text="Projetos" />
-      <Button fx:id="btnMembros" layoutX="105.0" layoutY="250.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" text="Membros" />
-      <Button fx:id="btnMembrosTime" layoutX="105.0" layoutY="300.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" text="Membros do Time" />
-      <Label layoutX="140.0" layoutY="410.0" styleClass="label-bright" text="Cor de exibição" />
-      <ColorPicker editable="true" layoutX="111.0" layoutY="433.0" prefHeight="31.0" prefWidth="160.0" />
-      <Button fx:id="btnPerfil" layoutX="105.0" layoutY="350.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" text="Perfis" />
+      <Button fx:id="btnTimes" layoutX="105.0" layoutY="150.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" text="Times" />
+      <Button fx:id="btnUsuarios" layoutX="105.0" layoutY="350.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" text="Usuarios" />
+      <Button fx:id="btnProjetos" layoutX="105.0" layoutY="100.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" text="Projetos" />
+      <Button fx:id="btnMembros" layoutX="105.0" layoutY="200.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" text="Membros" />
+      <Button fx:id="btnMembrosTime" layoutX="105.0" layoutY="250.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" text="Membros do Time" />
+      <Button fx:id="btnPerfil" layoutX="105.0" layoutY="300.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" text="Perfis" />
    </children>
 </AnchorPane>
