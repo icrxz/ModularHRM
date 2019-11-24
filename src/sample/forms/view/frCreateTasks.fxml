@@ -23,7 +23,7 @@
       <Label layoutX="82.0" layoutY="290.0" text="Data de finalização:" />
       <DatePicker fx:id="dtDataFin" layoutX="80.0" layoutY="310.0" prefHeight="35.0" prefWidth="336.0" />
       <Label layoutX="82.0" layoutY="360.0" text="Descrição:" />
-      <TextArea id="descriTask" fx:id="txtDesc" layoutX="80.0" layoutY="380.0" prefHeight="116.0" prefWidth="336.0" />
+      <TextArea fx:id="txtDesc" layoutX="80.0" layoutY="380.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="116.0" prefWidth="336.0" wrapText="true" />
       <Button id="brtCreateTask" fx:id="btnSalvar" layoutX="82.0" layoutY="530.0" mnemonicParsing="false" prefWidth="105.0" text="Salvar" />
       <Button id="btnCancel" fx:id="btnCancelar" layoutX="311.0" layoutY="530.0" mnemonicParsing="false" prefWidth="105.0" text="Cancelar" />
    </children>

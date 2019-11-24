@@ -43,7 +43,7 @@ public class ConfigController implements Initializable {
         });
 
         this.btnMembrosTime.setOnMouseClicked((MouseEvent e) -> {
-            ExecutaTela("forms/view/frCRUDTeamMember.fxml", TeamMember.class);
+            ExecutaTela("forms/view/frCRUD.fxml", TeamMember.class);
         });
 
         this.btnMembros.setOnMouseClicked((MouseEvent e) -> {

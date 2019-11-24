@@ -59,11 +59,11 @@ public class Task extends Basis {
         TaskCompleted = taskCompleted;
     }
 
-    public Member getAssignedTo() {
+    public TeamMember getAssignedTo() {
         return AssignedTo;
     }
 
-    public void setAssignedTo(Member assignedTo) {
+    public void setAssignedTo(TeamMember assignedTo) {
         AssignedTo = assignedTo;
     }
 

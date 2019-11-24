@@ -3,9 +3,11 @@ package sample.forms.controller;
 import br.com.ec6.modular.contoller.EventDAO;
 import br.com.ec6.modular.contoller.MemberDAO;
 import br.com.ec6.modular.contoller.TaskDAO;
+import br.com.ec6.modular.contoller.TeamMemberDAO;
 import br.com.ec6.modular.model.Event;
 import br.com.ec6.modular.model.Member;
 import br.com.ec6.modular.model.Task;
+import br.com.ec6.modular.model.TeamMember;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -25,7 +27,7 @@ public class CreateTaskContoller implements Initializable {
     @FXML
     private ComboBox<Event> cbEvento = new ComboBox<>();
     @FXML
-    private ComboBox<Member> cbMembro = new ComboBox<>();
+    private ComboBox<TeamMember> cbMembro = new ComboBox<>();
     @FXML
     private DatePicker dtDataFin;
     @FXML
@@ -43,8 +45,6 @@ public class CreateTaskContoller implements Initializable {
 
         CarregaComboBox();
 
-
-
         this.btnSalvar.setOnMouseClicked((MouseEvent e) -> {
             CriarTarefa();
         });
@@ -60,10 +60,18 @@ public class CreateTaskContoller implements Initializable {
             TaskDAO tDAO = new TaskDAO();
 
             Event evento = cbEvento.getValue();
-            Member membro = cbMembro.getValue();
+            TeamMember membro = cbMembro.getValue();
             String nome = txtNome.getText();
             String desc = txtDesc.getText();
-            LocalDate data = dtDataFin.getValue();
+            LocalDateTime data = dtDataFin.getValue().atStartOfDay();
+
+            task.setName(nome);
+            task.setDescription(desc);
+            task.setDueDate(data);
+            task.setRelatedEvent(evento);
+            task.setTaskCompleted(false);
+
+            task.setAssignedTo(membro);
 
             tDAO.Insere(task);
 
@@ -75,13 +83,13 @@ public class CreateTaskContoller implements Initializable {
     }
 
     private void CarregaComboBox(){
-        MemberDAO mDAO = new MemberDAO();
+        TeamMemberDAO mDAO = new TeamMemberDAO();
         EventDAO eDAO = new EventDAO();
 
         cbEvento.getItems().clear();
         cbMembro.getItems().clear();
 
-        cbMembro.getItems().addAll(mDAO.SelecionaTodos(Member.class));
+        cbMembro.getItems().addAll(mDAO.SelecionaTodos(TeamMember.class));
         cbEvento.getItems().addAll(eDAO.EventosAtivos());
     }
 
