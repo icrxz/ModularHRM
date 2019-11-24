@@ -2,29 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e409403b-02fb-4010-b7f5-e0b9372a0287" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/sample/forms/view/frEditEvent.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/forms/view/frEditTask.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/META-INF/ModularHRM.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/dao/BasisDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/dao/EventDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/dao/ProfilesDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/dao/TaskDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/dao/TeamDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/dao/TeamMemberDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/dao/UsersDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/Basis.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/Event.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/Member.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/Profile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/Project.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/Task.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/Team.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/TeamMember.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/global/SingletonUserLogged.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/global/SingletonUserLogged.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ModularHRM/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/sample/controllers/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/forms/view/frConfig.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/view/frConfig.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/forms/view/frLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/view/frLogin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forms/view/frCreateTasks.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/view/frCreateTasks.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
