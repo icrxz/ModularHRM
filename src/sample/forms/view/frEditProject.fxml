@@ -29,7 +29,7 @@
                </font>
             </Label>
             <TextField id="txtUser" fx:id="txtCliente" layoutX="80.0" layoutY="180.0" prefWidth="250.0" promptText="Cliente" />
-            <Button id="btnCriarUser" fx:id="btnCriarProject" layoutX="78.0" layoutY="282.0" mnemonicParsing="false" prefWidth="104.0" text="Editar" />
+            <Button id="btnCriarUser" fx:id="btnCriarProject" layoutX="78.0" layoutY="282.0" mnemonicParsing="false" prefWidth="104.0" text="Salvar" />
             <Button id="btnCanceluser" fx:id="btnCancelar" layoutX="225.0" layoutY="282.0" mnemonicParsing="false" text="Cancelar" />
             <CheckBox fx:id="checkProject" layoutX="85.0" layoutY="243.0" mnemonicParsing="false" styleClass="label-bright" text="Projeto Concluido?" />
          </children>
