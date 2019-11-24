@@ -50,7 +50,7 @@ public class MenuController implements Initializable {
         Screens.stage.setTitle("Modular HRM - Menu Principal");
         User uLog = SingletonUserLogged.UserLogged;
 
-        lblUser.setText("Login: " + uLog.getUserName());
+        lblUser.setText("Usuário: " + uLog.getName());
         lblCargo.setText("Perfil: " + uLog.getProfile().getName());
 
        this.btnAgenda.setOnMouseEntered((MouseEvent e) -> {

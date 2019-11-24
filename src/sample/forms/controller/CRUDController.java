@@ -15,6 +15,7 @@ import sample.Screens;
 
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class CRUDController implements Initializable {
@@ -46,8 +47,8 @@ public class CRUDController implements Initializable {
         clId.setEditable(false);
         tbData.getColumns().addAll(clId);
 
-        TableColumn<Basis, LocalDateTime> clLastModifiedDate = new TableColumn("Ultima Modificação");
-        clLastModifiedDate.setCellValueFactory(f -> new ReadOnlyObjectWrapper<LocalDateTime>(f.getValue().getLastModifiedDate()));
+        TableColumn<Basis, String> clLastModifiedDate = new TableColumn("Ultima Modificação");
+        clLastModifiedDate.setCellValueFactory(f -> new ReadOnlyObjectWrapper<String>(f.getValue().getLastModifiedDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))));
         clLastModifiedDate.setMinWidth(180.0);
         clLastModifiedDate.setResizable(false);
         clLastModifiedDate.setEditable(false);
@@ -74,8 +75,8 @@ public class CRUDController implements Initializable {
             clEventDescription.setResizable(true);
             clEventDescription.setEditable(false);
 
-            TableColumn<Event, LocalDateTime> clEventDate = new TableColumn("Data");
-            clEventDate.setCellValueFactory(f -> new ReadOnlyObjectWrapper<LocalDateTime>(f.getValue().getDate()));
+            TableColumn<Event, String> clEventDate = new TableColumn("Data");
+            clEventDate.setCellValueFactory(f -> new ReadOnlyObjectWrapper<String>(f.getValue().getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))));
             clEventDate.setMinWidth(100.0);
             clEventDate.setResizable(true);
             clEventDate.setEditable(false);
@@ -178,8 +179,8 @@ public class CRUDController implements Initializable {
             clTaskDesc.setResizable(true);
             clTaskDesc.setEditable(true);
 
-            TableColumn<Task, LocalDateTime> clTaskDate = new TableColumn("Data de entrega");
-            clTaskDate.setCellValueFactory(f -> new ReadOnlyObjectWrapper<LocalDateTime>(f.getValue().getDueDate()));
+            TableColumn<Task, String> clTaskDate = new TableColumn("Data de entrega");
+            clTaskDate.setCellValueFactory(f -> new ReadOnlyObjectWrapper<String>(f.getValue().getDueDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
             clTaskDate.setPrefWidth(140.0);
             clTaskDate.setResizable(true);
             clTaskDate.setEditable(true);
@@ -191,8 +192,8 @@ public class CRUDController implements Initializable {
             clTaskCompleted.setResizable(true);
             clTaskCompleted.setEditable(true);
 
-            TableColumn<Task, Member> clTaskMember = new TableColumn("Membro");
-            clTaskMember.setCellValueFactory(f -> new ReadOnlyObjectWrapper<Member>(f.getValue().getAssignedTo()));
+            TableColumn<Task, TeamMember> clTaskMember = new TableColumn("Membro");
+            clTaskMember.setCellValueFactory(f -> new ReadOnlyObjectWrapper<TeamMember>(f.getValue().getAssignedTo()));
             clTaskMember.setPrefWidth(100.0);
             clTaskMember.setResizable(true);
             clTaskMember.setEditable(true);
@@ -230,6 +231,26 @@ public class CRUDController implements Initializable {
             clTeamProject.setEditable(false);
 
             tbData.getColumns().addAll(clTeamName, clTeamManager, clTeamProject);
+        }
+        else if(classe == TeamMember.class){
+            TeamMemberDAO tDAO = new TeamMemberDAO();
+            lblObjectName.setText("Membros de Time");
+            path = "forms/view/frCRUDTeamMember.fxml";
+            obserList = FXCollections.observableList(tDAO.SelecionaTodos(TeamMember.class));
+
+            TableColumn<TeamMember, Member> clMember = new TableColumn<>("Membro");
+            clMember.setCellValueFactory(f -> new ReadOnlyObjectWrapper<Member>(f.getValue().getMember()));
+            clMember.setMinWidth(100.0);
+            clMember.setResizable(true);
+            clMember.setEditable(false);
+
+            TableColumn<TeamMember, Team> clTeam = new TableColumn<>("Time");
+            clTeam.setCellValueFactory(f -> new ReadOnlyObjectWrapper<Team>(f.getValue().getTeam()));
+            clTeam.setMinWidth(100.0);
+            clTeam.setResizable(true);
+            clTeam.setEditable(false);
+
+            tbData.getColumns().addAll(clMember, clTeam);
         }
         else if(classe == User.class){
             UsersDAO uDAO = new UsersDAO();

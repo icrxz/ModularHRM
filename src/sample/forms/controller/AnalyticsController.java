@@ -35,6 +35,7 @@ public class AnalyticsController implements Initializable {
         BarChart.getData().add(getMemberData());
         AreaChart.getData().add(getTaskData());
     }
+
     public static  XYChart.Series getTaskData(){
 
         XYChart.Series areaData = new XYChart.Series();
@@ -44,9 +45,9 @@ public class AnalyticsController implements Initializable {
         Map<String, Integer> weekToAtivitymap = new HashMap<String, Integer>();
         for(Task tak : allTasks){
             LocalDateTime today = LocalDateTime.now();
-            if(tak.getDate().getMonth().equals(today.getMonth())){
+            if(tak.getDueDate().getMonth().equals(today.getMonth())){
                 Calendar cal = Calendar.getInstance();
-                cal.setTime(Date.from(tak.getDate().toLocalDate().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                cal.setTime(Date.from(tak.getDueDate().toLocalDate().atStartOfDay(ZoneId.systemDefault()).toInstant()));
 
                 String keyMap = "Semana "+cal.get(Calendar.WEEK_OF_MONTH);
                 if(!weekToAtivitymap.containsKey(keyMap))   {

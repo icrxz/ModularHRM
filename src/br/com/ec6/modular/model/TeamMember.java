@@ -16,10 +16,6 @@ public class TeamMember extends Basis{
     @JoinColumn(name = "Team")
     private Team team;
 
-    @ManyToOne
-    @JoinColumn(name = "CreateById")
-    private User CreateById;
-
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "ResponsibleTeamMember")
     private List<Event> events = new ArrayList<Event>();
 
@@ -46,5 +42,10 @@ public class TeamMember extends Basis{
 
     public void setEvents(List<Event> events) {
         this.events = events;
+    }
+
+    @Override
+    public String toString(){
+        return getMember().getName() + " - " + getTeam().getName();
     }
 }
