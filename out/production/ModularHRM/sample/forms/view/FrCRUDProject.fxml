@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane prefHeight="345.0" prefWidth="297.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.view.FrCRUDProject">
+<AnchorPane prefHeight="345.0" prefWidth="297.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.controller.CRUDProjectController">
    <children>
       <Label layoutX="70.0" styleClass="label-header" text="Projeto" />
       <TextField fx:id="txtProjeto" layoutX="52.0" layoutY="97.0" promptText="Nome" />

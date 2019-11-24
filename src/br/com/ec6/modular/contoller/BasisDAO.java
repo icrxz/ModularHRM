@@ -1,11 +1,14 @@
 package br.com.ec6.modular.contoller;
 
 import br.com.ec6.modular.model.Basis;
+import br.com.ec6.modular.model.User;
+import org.hibernate.Criteria;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +31,8 @@ public abstract class BasisDAO <E extends Basis> {
         throw new UnsupportedOperationException("Implementar na classe filha.");
     }
 
-    public List<E> SelecionaTodos(Class c){
-        String queryStr = "SELECT * FROM " + Tabela;
+    public List<E> SelecionaTodos(Class cls){
+        /*String queryStr = "SELECT * FROM " + Tabela;
         List<E> listObjects = new ArrayList<>();
         EntityManager manager = getConnection();
         Query query = manager.createQuery(queryStr);
@@ -38,7 +41,22 @@ public abstract class BasisDAO <E extends Basis> {
 
         manager.close();
 
-        return listObjects;
+        return listObjects;*/
+
+        EntityManager em = getConnection();
+                try{
+                    CriteriaBuilder cb = em.getCriteriaBuilder();
+
+                    CriteriaQuery<E> q = cb.createQuery(cls);
+
+                    TypedQuery<E> query = em.createQuery(q);
+                    List<E> results = query.getResultList();
+
+                    return results;
+                }
+                finally {
+                    em.close();
+                }
     }
 
     public void Insere(E entidade){

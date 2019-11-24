@@ -30,13 +30,25 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){
 
+        btnEntrar.setOnMouseEntered((MouseEvent e) -> {
+           btnEntrar.setStyle("-fx-background-color: #3a3a3a;");
+         });
 
+        btnEntrar.setOnMouseExited((MouseEvent e) -> {
+            btnEntrar.setStyle("-fx-background-color: #1d1d1d;");
+        });
 
         btnEntrar.setOnMouseClicked((MouseEvent e) -> {
             Entrar();
         });
 
         btnEntrar.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                Entrar();
+            }
+        });
+
+        txtSenha.setOnKeyPressed((KeyEvent e) -> {
             if (e.getCode() == KeyCode.ENTER) {
                 Entrar();
             }
