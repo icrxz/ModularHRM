@@ -21,7 +21,7 @@ public class Task extends Basis {
 
     @ManyToOne
     @JoinColumn(name = "AssignedTo")
-    private Member AssignedTo;
+    private TeamMember AssignedTo;
 
     @ManyToOne
     @JoinColumn(name = "RelatedEvent")

@@ -16,6 +16,10 @@ public class TeamMember extends Basis{
     @JoinColumn(name = "Team")
     private Team team;
 
+    @ManyToOne
+    @JoinColumn(name = "CreateById")
+    private User CreateById;
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "ResponsibleTeamMember")
     private List<Event> events = new ArrayList<Event>();
 
