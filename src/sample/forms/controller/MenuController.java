@@ -4,6 +4,8 @@ import br.com.ec6.modular.global.SingletonUserLogged;
 import br.com.ec6.modular.model.Event;
 import br.com.ec6.modular.model.Task;
 import br.com.ec6.modular.model.User;
+import br.com.ec6.modular.model.Enum.EnumPermissao;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -12,7 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import sample.Main;
 import sample.Screens;
 
 import java.net.URL;
@@ -44,7 +45,6 @@ public class MenuController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         janela = Screens.stage;
-
         Screens.stage.setResizable(false);
         Screens.stage.setMaximized(false);
         Screens.stage.setTitle("Modular HRM - Menu Principal");
@@ -52,6 +52,18 @@ public class MenuController implements Initializable {
 
         lblUser.setText("Usuário: " + uLog.getName());
         lblCargo.setText("Perfil: " + uLog.getProfile().getName());
+
+        if(uLog.getProfile().equals(EnumPermissao.ADMINISTRADOR)){
+            btnAgenda.setDisable(true);
+            btnAnalytics.setDisable(true);
+            btnTarefas.setDisable(true);
+        }
+        else if(uLog.getProfile().equals(EnumPermissao.DIRETOR)){
+
+        }
+        else if(uLog.getProfile().equals(EnumPermissao.GERENTE)){
+
+        }
 
        this.btnAgenda.setOnMouseEntered((MouseEvent e) -> {
             this.lblDesc.setText("A partir desta tela é possível verificar as tarefas agendadas para os usuários, "

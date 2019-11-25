@@ -3,6 +3,7 @@ package br.com.ec6.modular.contoller;
 import br.com.ec6.modular.model.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -31,6 +32,8 @@ public class UsersDAO extends BasisDAO {
             em.close();
 
             return u;
+        }catch (NoResultException nre){
+            return null;
         }finally {
             em.close();
         }

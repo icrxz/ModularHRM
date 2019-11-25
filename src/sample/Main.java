@@ -14,21 +14,6 @@ public class Main extends Application {
         Screens s = new Screens();
         s.setScreen("forms/view/frLogin.fxml");
         s.start(new Stage());
-
-        /*Parent root = FXMLLoader.load(getClass().getResource("forms/view/frMenu.fxml"));
-
-        Scene scene = new Scene(root);
-
-        primaryStage.setResizable(false);
-        primaryStage.setMaximized(false);
-        primaryStage.setTitle("Modular HRM - Menu Principal");
-        primaryStage.setScene(scene);
-        /*primaryStage.setOnCloseRequest(e -> {
-            e.consume();
-            primaryStage.setIconified(true);
-        });
-        stage = primaryStage;
-        primaryStage.show();*/
     }
 
     public static void main(String[] args) {

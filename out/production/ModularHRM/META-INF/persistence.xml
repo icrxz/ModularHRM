@@ -13,10 +13,10 @@
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 
-            <property name="hibernate.connection.url" value = "jdbc:sqlserver://DESKTOP-S9D1C6E;databaseName=ModularHRM" />
+            <property name="hibernate.connection.url" value = "jdbc:sqlserver://CE642;instanceName=SQLEXPRESS;databaseName=ModularHRM" />
 
             <property name="javax.persistence.jdbc.user" value="sa" />
-            <property name="javax.persistence.jdbc.password" value="123456" />
+            <property name="javax.persistence.jdbc.password" value="To1edoDoBr@silED" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
 
             <property name="show_sql" value="true" />

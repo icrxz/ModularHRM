@@ -75,9 +75,9 @@ public class CreateTaskContoller implements Initializable {
             task.setAssignedTo(membro);
 
             tDAO.Insere(task);
-
-            Utils.sendEmailNotification(membro.getMember().getEmail(), task);
             MostraAlerta("Tarefa cadastrada com sucesso!");
+            Utils.sendEmailNotification(membro.getMember().getEmail(), task);
+            MostraAlerta("E-mail enviado com sucesso!");
             Screens.stage.close();
         }catch (Exception ex){
             MostraAlerta(ex.getMessage());

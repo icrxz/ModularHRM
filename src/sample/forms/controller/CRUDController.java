@@ -50,7 +50,7 @@ public class CRUDController implements Initializable {
         tbData.getColumns().addAll(clId);
 
         TableColumn<Basis, String> clLastModifiedDate = new TableColumn("Ultima Modificação");
-        clLastModifiedDate.setCellValueFactory(f -> new ReadOnlyObjectWrapper<String>(f.getValue().getLastModifiedDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))));
+        clLastModifiedDate.setCellValueFactory(f -> new ReadOnlyObjectWrapper<String>(f.getValue().getLastModifiedDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))));
         clLastModifiedDate.setMinWidth(180.0);
         clLastModifiedDate.setResizable(false);
         clLastModifiedDate.setEditable(false);
@@ -79,13 +79,13 @@ public class CRUDController implements Initializable {
             clEventDescription.setEditable(false);
 
             TableColumn<Event, String> clEventDateStart = new TableColumn("Data Inicio");
-            clEventDateStart.setCellValueFactory(f -> new ReadOnlyObjectWrapper<String>(f.getValue().getDateStart().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))));
+            clEventDateStart.setCellValueFactory(f -> new ReadOnlyObjectWrapper<String>(f.getValue().getDateStart().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))));
             clEventDateStart.setMinWidth(100.0);
             clEventDateStart.setResizable(true);
             clEventDateStart.setEditable(false);
 
             TableColumn<Event, String> clEventDateEnd = new TableColumn("Data Final");
-            clEventDateEnd.setCellValueFactory(f -> new ReadOnlyObjectWrapper<String>(f.getValue().getDateEnd().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))));
+            clEventDateEnd.setCellValueFactory(f -> new ReadOnlyObjectWrapper<String>(f.getValue().getDateEnd().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))));
             clEventDateEnd.setMinWidth(100.0);
             clEventDateEnd.setResizable(true);
             clEventDateEnd.setEditable(false);

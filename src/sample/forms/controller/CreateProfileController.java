@@ -2,6 +2,7 @@ package sample.forms.controller;
 
 import br.com.ec6.modular.contoller.ProfileDAO;
 import br.com.ec6.modular.model.Profile;
+import br.com.ec6.modular.model.Enum.EnumPermissao;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -18,7 +19,7 @@ public class CreateProfileController implements Initializable {
     @FXML
     private TextField txtNome;
     @FXML
-    private ComboBox<String> cbPermission;
+    private ComboBox<EnumPermissao> cbPermission;
     @FXML
     private Button btnCriar;
     @FXML
@@ -30,8 +31,7 @@ public class CreateProfileController implements Initializable {
         Screens.stage.setMaximized(false);
         Screens.stage.setTitle("Modular HRM - Perfil");
 
-        String[] permissionArray = {"Gerente", "Diretor", "Administrador"};
-        cbPermission.getItems().addAll(permissionArray);
+        cbPermission.getItems().setAll(EnumPermissao.values());
 
         this.btnCriar.setOnMouseClicked((MouseEvent e) -> {
             CriaPerfil();
@@ -48,7 +48,7 @@ public class CreateProfileController implements Initializable {
             ProfileDAO pDAO = new ProfileDAO();
 
             String name = txtNome.getText().trim();
-            String permission = cbPermission.getValue();
+            String permission = cbPermission.getValue().getDescricao();
 
             if (name.length() > 0)
                 p.setName(name);
