@@ -111,7 +111,7 @@ public class CreateEventContoller implements Initializable {
 
             eDAO.Insere(event);
             MostraAlerta("Evento criado com sucesso!");
-            Utils.sendEmailNotification(event.getResponsibleTeamMember().getMember().getEmail(), event);
+            Utils.sendEmailNotification(event.getResponsibleTeamMember().getMember().getEmail(), event, true);
             MostraAlerta("E-mail enviado com sucesso!");
             Screens.stage.close();
         }catch (Exception ex){

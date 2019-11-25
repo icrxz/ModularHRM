@@ -16,25 +16,25 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class Utils {
-    public static void sendEmailNotification(String emailTo, Event event){
+    public static void sendEmailNotification(String emailTo, Event event, Boolean isInsert){
         String body, subject;
-        subject = "Novo Evento criada";
-        body = "Ola "+event.getResponsibleTeamMember().getMember().getName()+"\n Houve uma atualização no Evento: "+event.getName()+
-                "Descrição: "+event.getDescription()+
-                "Tipo: "+event.getType()+
-                "Horario Inicio: "+event.getDateStart()+
-                "Horario Fim: "+event.getDateEnd()+
-                "Local: "+event.getLocation();
+        subject = "Novo Evento" +(isInsert ? " criado." : " atualizado.");
+        body = "Ola "+event.getResponsibleTeamMember().getMember().getName()+"\n\nHouve uma atualização no Evento: "+event.getName()+
+                "\n\nDescrição: "+event.getDescription()+
+                "\nTipo: "+event.getType()+
+                "\nHorario Inicio: "+event.getDateStart()+
+                "\nHorario Fim: "+event.getDateEnd()+
+                "\nLocal: "+event.getLocation();
         sendEmail(emailTo, body, subject);
     }
-    public static void sendEmailNotification(String emailTo, Task event){
+    public static void sendEmailNotification(String emailTo, Task event, Boolean isInsert){
         String body, subject;
-        subject = "Nova Tarefa criada";
-        body = "Ola "+event.getAssignedTo().getMember().getName()+"\n Houve uma atualização na tarefa: "+event.getName()+
-                "Descrição: "+event.getDescription()+
-                "Tarefa: "+event.isTaskCompleted()+
-                "Evento: "+event.getRelatedEvent().getName()+
-                "Data de entrega: "+event.getDueDate();
+        subject = "Nova Tarefa" +(isInsert ? " criada." : " atualizada.");
+        body = "Ola "+event.getAssignedTo().getMember().getName()+"\n\nHouve uma atualização na tarefa: "+event.getName()+
+                "\n\nDescrição: "+event.getDescription()+
+                "\nTarefa: "+event.isTaskCompleted()+
+                "\nEvento: "+event.getRelatedEvent().getName()+
+                "\nData de entrega: "+event.getDueDate();
         //body = "teste";
         sendEmail(emailTo, body, subject);
     }

@@ -86,7 +86,7 @@ public class EditTaskController implements Initializable {
 
             tDAO.Altera(tRow);
             MostraAlerta("Tarefa alterada com sucesso!");
-            Utils.sendEmailNotification(membro.getMember().getEmail(), tRow);
+            Utils.sendEmailNotification(membro.getMember().getEmail(), tRow, false);
             MostraAlerta("E-mail enviado com sucesso!");
             janela.close();
         }catch (Exception ex){

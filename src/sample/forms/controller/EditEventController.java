@@ -123,7 +123,7 @@ public class EditEventController implements Initializable {
 
             eDAO.Altera(eRow);
             MostraAlerta("Evento alterado com sucesso!");
-            Utils.sendEmailNotification(eRow.getResponsibleTeamMember().getMember().getEmail(), eRow);
+            Utils.sendEmailNotification(eRow.getResponsibleTeamMember().getMember().getEmail(), eRow, false);
             MostraAlerta("E-mail enviado com sucesso!");
             Screens.stage.close();
         }catch (Exception ex){
