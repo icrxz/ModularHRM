@@ -2,6 +2,7 @@ package br.com.ec6.modular.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,7 +96,7 @@ public class Event extends Basis {
 
     @Override
     public String toString(){
-        return getName() + " - " + getDateStart().toString();
+        return getName() + " - " + getDateStart().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
     }
 
 }

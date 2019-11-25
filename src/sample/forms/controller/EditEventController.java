@@ -13,8 +13,12 @@ import javafx.scene.input.MouseEvent;
 import sample.Screens;
 
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EditEventController implements Initializable {
 
@@ -73,6 +77,49 @@ public class EditEventController implements Initializable {
     private void EditaEvento(){
         try{
             EventDAO eDAO = new EventDAO();
+            Pattern p = Pattern.compile("^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$");
+
+            String name = txtEvento.getText().trim();
+            String desc = txtDescricao.getText().trim();
+            String location = txtLocal.getText().trim();
+            LocalDateTime dateS = dateInicio.getValue().atStartOfDay();
+            LocalDateTime dateE = dateFinal.getValue().atStartOfDay();
+            TeamMember member = cbTeamMember.getValue();
+            String type = txtTipo.getText();
+            String timeIni;
+            String timeFim;
+            Matcher m = p.matcher(txtHoraIni.getText().trim());
+            if(m.matches())
+                timeIni = txtHoraIni.getText().trim();
+            else
+                throw new Exception("Digite a hora inicial no formato correto!");
+            m = p.matcher(txtHoraFinal.getText().trim());
+            if(m.matches())
+                timeFim = txtHoraFinal.getText().trim();
+            else
+                throw new Exception("Digite a hora final no formato correto!");
+
+            dateS = dateS.with(LocalTime.parse(timeIni));
+            dateE = dateE.with(LocalTime.parse(timeFim));
+
+            if(dateS.isAfter(dateE))
+                throw new Exception("Data de início não pode ser posterior a data final");
+
+            if(name.length() > 0)
+                eRow.setName(name);
+            eRow.setLocation(location);
+            if(desc.length() > 0)
+                eRow.setDescription(desc);
+            eRow.setDateStart(dateS);
+            eRow.setDateEnd(dateE);
+            eRow.setType(type);
+            if(member != null)
+                eRow.setResponsibleTeamMember(member);
+            else
+                throw new Exception("Selecione um membro para o evento!");
+
+            if(!eDAO.validaEvento(eRow))
+                throw new Exception("Evento em duplicidade!");
 
             eDAO.Altera(eRow);
             MostraAlerta("Evento alterado com sucesso!");

@@ -53,21 +53,15 @@ public class MenuController implements Initializable {
         lblUser.setText("Usuário: " + uLog.getName());
         lblCargo.setText("Perfil: " + uLog.getProfile().getName());
 
-        if(uLog.getProfile().equals(EnumPermissao.ADMINISTRADOR)){
+        /*if(uLog.getProfile().getPermissionLevel().equals(EnumPermissao.ADMINISTRADOR.getDescricao())){
             btnAgenda.setDisable(true);
             btnAnalytics.setDisable(true);
             btnTarefas.setDisable(true);
-        }
-        else if(uLog.getProfile().equals(EnumPermissao.DIRETOR)){
-
-        }
-        else if(uLog.getProfile().equals(EnumPermissao.GERENTE)){
-
-        }
+        }*/
 
        this.btnAgenda.setOnMouseEntered((MouseEvent e) -> {
             this.lblDesc.setText("A partir desta tela é possível verificar as tarefas agendadas para os usuários, "
-                    + "além de permitir o gerente adicionar novas tarefas para os seus funcionarios!");
+                    + "além de permitir o gerente adicionar novos eventos para a sua equipe!");
         });
         this.btnAgenda.setOnMouseExited((MouseEvent e) -> {
             this.lblDesc.setText("");
@@ -77,7 +71,7 @@ public class MenuController implements Initializable {
         });
 
         this.btnAnalytics.setOnMouseEntered((MouseEvent e) -> {
-            this.lblDesc.setText("A partir desta tela é possível verficar e gerar gráficos de desempenho, cliente e análises profundas dos projetos em andamento e concluidos!");
+            this.lblDesc.setText("A partir desta tela é possível verficar gráficos de eventos e análises profundas dos projetos e equipes!");
         });
         this.btnAnalytics.setOnMouseExited((MouseEvent e) -> {
             this.lblDesc.setText("");
@@ -87,7 +81,7 @@ public class MenuController implements Initializable {
         });
 
         this.btnConfig.setOnMouseEntered((MouseEvent e) -> {
-            this.lblDesc.setText("Configurações gerais do sistema, cadastro de usários e parametrização da aplicação!");
+            this.lblDesc.setText("Configurações gerais do sistema, cadastro de times, projetos, membros, usuários e perfis!");
         });
         this.btnConfig.setOnMouseExited((MouseEvent e) -> {
             this.lblDesc.setText("");
@@ -97,7 +91,7 @@ public class MenuController implements Initializable {
         });
 
         this.btnTarefas.setOnMouseEntered((MouseEvent e) -> {
-            this.lblDesc.setText("Configuração de novos contratos, clientes, projetos e tudo mais relacionado ao andamento das funções de projeto!");
+            this.lblDesc.setText("Cadastro e visualização de tarefas relacionadas os não com eventos cadastrados para os membros de uma equipe!");
         });
         this.btnTarefas.setOnMouseExited((MouseEvent e) -> {
             this.lblDesc.setText("");

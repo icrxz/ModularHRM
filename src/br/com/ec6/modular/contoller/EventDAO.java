@@ -25,7 +25,7 @@ public class EventDAO extends BasisDAO{
             CriteriaQuery<Event> criteria = builder.createQuery(Event.class);
             Root<Event> root = criteria.from(Event.class);
 
-            Predicate ativoC = builder.lessThanOrEqualTo(root.get("DateEnd"), LocalDateTime.now());
+            Predicate ativoC = builder.greaterThanOrEqualTo(root.get("DateEnd"), LocalDateTime.now());
 
             criteria.where(ativoC);
 

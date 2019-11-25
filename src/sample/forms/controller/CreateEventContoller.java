@@ -37,7 +37,7 @@ public class CreateEventContoller implements Initializable {
     @FXML
     private DatePicker dateFinal;
     @FXML
-    private ComboBox<String> cbTipo;
+    private TextField txtTipo;
     @FXML
     private ComboBox<TeamMember> cbTeamMember;
     @FXML
@@ -72,7 +72,7 @@ public class CreateEventContoller implements Initializable {
             String location = txtLocal.getText().trim();
             LocalDateTime dateS = dateInicio.getValue().atStartOfDay();
             LocalDateTime dateE = dateFinal.getValue().atStartOfDay();
-            String type = cbTipo.getValue();
+            String type = txtTipo.getText();
             TeamMember member = cbTeamMember.getValue();
             String timeIni;
             String timeFim;

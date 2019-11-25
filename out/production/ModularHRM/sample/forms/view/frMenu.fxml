@@ -17,8 +17,8 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                            <children>
-                              <Label fx:id="lblUser" layoutX="14.0" layoutY="14.0" text="{LoggedUserName}" />
-                              <Label fx:id="lblCargo" layoutX="14.0" layoutY="48.0" text="{UserLoggedCargo}" />
+                              <Label fx:id="lblUser" layoutX="14.0" layoutY="14.0" styleClass="label-bright" text="{LoggedUserName}" />
+                              <Label fx:id="lblCargo" layoutX="14.0" layoutY="48.0" styleClass="label-bright" text="{UserLoggedCargo}" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
@@ -39,10 +39,10 @@
                            <children>
                               <Pane prefHeight="98.0" prefWidth="708.0">
                                  <children>
-                                    <Label layoutX="143.0" layoutY="14.0" text="Resumo 1" />
-                                    <Label layoutX="499.0" layoutY="14.0" text="Resumo 2" />
-                                    <Label fx:id="lblResumo1" layoutX="143.0" layoutY="49.0" text="{Resumo1}" />
-                                    <Label fx:id="lblResumo2" layoutX="499.0" layoutY="49.0" text="{Resumo2}" />
+                                    <Label layoutX="143.0" layoutY="14.0" styleClass="label-bright" text="Resumo 1" />
+                                    <Label layoutX="499.0" layoutY="14.0" styleClass="label-bright" text="Resumo 2" />
+                                    <Label fx:id="lblResumo1" layoutX="143.0" layoutY="49.0" styleClass="label-bright" text="{Resumo1}" />
+                                    <Label fx:id="lblResumo2" layoutX="499.0" layoutY="49.0" styleClass="label-bright" text="{Resumo2}" />
                                  </children>
                               </Pane>
                            </children>
@@ -51,22 +51,22 @@
                            <children>
                               <Pane cacheHint="QUALITY" depthTest="ENABLE" layoutY="25.0" prefHeight="443.0" prefWidth="679.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-20.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button id="btnAgenda" fx:id="btnAgenda" layoutX="29.0" layoutY="29.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" text="Agenda">
+                                    <Button id="btnAgenda" fx:id="btnAgenda" layoutX="29.0" layoutY="29.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" styleClass="button-menu" text="Agenda">
                                        <font>
                                           <Font size="72.0" />
                                        </font>
                                     </Button>
-                                    <Button id="btnAnalytics" fx:id="btnAnalytics" layoutX="357.0" layoutY="29.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" text="Analytics">
+                                    <Button id="btnAnalytics" fx:id="btnAnalytics" layoutX="357.0" layoutY="29.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" styleClass="button-menu" text="Analytics">
                                        <font>
                                           <Font name="Bell MT Bold" size="36.0" />
                                        </font>
                                     </Button>
-                                    <Button id="btnTarefas" fx:id="btnTarefas" layoutX="29.0" layoutY="232.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" text="Tarefas">
+                                    <Button id="btnTarefas" fx:id="btnTarefas" layoutX="29.0" layoutY="232.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" styleClass="button-menu" text="Tarefas">
                                        <font>
                                           <Font name="Bell MT Bold" size="36.0" />
                                        </font>
                                     </Button>
-                                    <Button id="btnConfigur" fx:id="btnConfig" layoutX="357.0" layoutY="231.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" text="Configurações">
+                                    <Button id="btnConfigur" fx:id="btnConfig" layoutX="357.0" layoutY="231.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="318.0" styleClass="button-menu" text="Configurações">
                                        <font>
                                           <Font size="36.0" />
                                        </font>
