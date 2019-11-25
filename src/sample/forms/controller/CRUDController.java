@@ -2,7 +2,9 @@ package sample.forms.controller;
 
 import br.com.ec6.modular.contoller.*;
 import br.com.ec6.modular.global.SingletonRowData;
+import br.com.ec6.modular.global.SingletonUserLogged;
 import br.com.ec6.modular.model.*;
+import br.com.ec6.modular.model.Enum.EnumPermissao;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,11 +14,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.hibernate.query.criteria.internal.expression.NullLiteralExpression;
 import sample.Screens;
 
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
@@ -33,14 +33,24 @@ public class CRUDController implements Initializable {
     @FXML
     private Button btnNovo;
 
+    ObservableList<Basis> obserList = null;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         classe = Screens.classe;
         Screens.stage.setResizable(false);
         Screens.stage.setMaximized(false);
         Screens.stage.setTitle("Modular HRM - Busca");
-        ObservableList<Basis> obserList = null;
+        obserList = null;
         tbData.getColumns().clear();
+
+        if(SingletonUserLogged.UserLogged.getProfile().getPermissionLevel().equals(EnumPermissao.GERENTE.getDescricao())){
+            btnNovo.setDisable(false);
+        }
+        else if(SingletonUserLogged.UserLogged.getProfile().getPermissionLevel().equals(EnumPermissao.ADMINISTRADOR.getDescricao())){
+            if(classe == Profile.class || classe == User.class)
+                btnNovo.setDisable(false);
+        }
 
         TableColumn<Basis, Integer> clId = new TableColumn<>("Id");
         clId.setCellValueFactory(f -> new ReadOnlyObjectWrapper<Integer>(f.getValue().getId()));
@@ -321,16 +331,7 @@ public class CRUDController implements Initializable {
 
         tbData.getColumns().add(clLastModifiedDate);
 
-        if(obserList.size() > 0)
-            tbData.setItems(obserList);
-        else{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Aviso!");
-            alert.setContentText("Essa tabela não possui registros!");
-            alert.showAndWait();
-            alert.getDialogPane().requestFocus();
-            alert.getDialogPane().toFront();
-        }
+        AtualizaLista();
 
         tbData.setRowFactory( tv -> {
             TableRow<Basis> row = new TableRow<>();
@@ -345,11 +346,25 @@ public class CRUDController implements Initializable {
         });
     }
 
+    private void AtualizaLista(){
+        if(obserList.size() > 0)
+            tbData.setItems(obserList);
+        else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Aviso!");
+            alert.setContentText("Essa tabela não possui registros!");
+            alert.showAndWait();
+            alert.getDialogPane().requestFocus();
+            alert.getDialogPane().toFront();
+        }
+    }
+
     public void ExecutaTela() {
         try {
             Screens p = new Screens();
             p.setScreen(path);
             p.start(new Stage());
+            AtualizaLista();
         } catch (Exception ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro!");
@@ -367,6 +382,7 @@ public class CRUDController implements Initializable {
             Screens p = new Screens();
             p.setScreen(pathEdit);
             p.start(new Stage());
+            AtualizaLista();
         } catch (Exception ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro!");

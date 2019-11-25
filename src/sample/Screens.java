@@ -35,6 +35,9 @@ public class Screens extends Application {
 
         stage.setScene(scene);
         stage.toFront();
-        stage.showAndWait();
+        if(Screen.equals("forms/view/frMenu.fxml"))
+            stage.show();
+        else
+            stage.showAndWait();
     }
 }

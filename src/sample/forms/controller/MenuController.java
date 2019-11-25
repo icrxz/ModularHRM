@@ -1,8 +1,11 @@
 package sample.forms.controller;
 
+import br.com.ec6.modular.contoller.TaskDAO;
+import br.com.ec6.modular.contoller.TeamDAO;
 import br.com.ec6.modular.global.SingletonUserLogged;
 import br.com.ec6.modular.model.Event;
 import br.com.ec6.modular.model.Task;
+import br.com.ec6.modular.model.Team;
 import br.com.ec6.modular.model.User;
 import br.com.ec6.modular.model.Enum.EnumPermissao;
 
@@ -17,6 +20,7 @@ import javafx.stage.Stage;
 import sample.Screens;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
@@ -52,12 +56,13 @@ public class MenuController implements Initializable {
 
         lblUser.setText("Usuário: " + uLog.getName());
         lblCargo.setText("Perfil: " + uLog.getProfile().getName());
+        AtualizaLabel();
 
-        /*if(uLog.getProfile().getPermissionLevel().equals(EnumPermissao.ADMINISTRADOR.getDescricao())){
+        if(uLog.getProfile().getPermissionLevel().equals(EnumPermissao.ADMINISTRADOR.getDescricao())){
             btnAgenda.setDisable(true);
             btnAnalytics.setDisable(true);
             btnTarefas.setDisable(true);
-        }*/
+        }
 
        this.btnAgenda.setOnMouseEntered((MouseEvent e) -> {
             this.lblDesc.setText("A partir desta tela é possível verificar as tarefas agendadas para os usuários, "
@@ -109,11 +114,21 @@ public class MenuController implements Initializable {
             janela.hide();
             p.start(new Stage());
             janela.show();
+            AtualizaLabel();
         } catch (Exception ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro!");
             alert.setContentText(ex.getMessage());
             alert.show();
         }
+    }
+
+    private void AtualizaLabel(){
+        TaskDAO tDAO = new TaskDAO();
+        TeamDAO teDAO = new TeamDAO();
+        List<Task> tarefasAbertas = tDAO.SelecionaTodos(Task.class);
+
+        lblResumo1.setText("Tarefas Abertas: " + tarefasAbertas.stream().filter(x -> x.isTaskCompleted() == false).count());
+        lblResumo2.setText("Times Criados: " + teDAO.SelecionaTodos(Team.class).size());
     }
 }

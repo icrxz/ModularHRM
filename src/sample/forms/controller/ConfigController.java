@@ -1,5 +1,6 @@
 package sample.forms.controller;
 
+import br.com.ec6.modular.global.SingletonUserLogged;
 import br.com.ec6.modular.model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import sample.Screens;
+import br.com.ec6.modular.model.Enum.EnumPermissao;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,6 +37,10 @@ public class ConfigController implements Initializable {
         Screens.stage.setResizable(false);
         Screens.stage.setMaximized(false);
         Screens.stage.setTitle("Modular HRM - Configuração");
+
+        if(SingletonUserLogged.UserLogged.getProfile().getPermissionLevel().equals(EnumPermissao.ADMINISTRADOR.getDescricao())){
+
+        }
 
         this.btnTimes.setOnMouseClicked((MouseEvent e) -> {
             ExecutaTela("forms/view/frCRUD.fxml", Team.class);

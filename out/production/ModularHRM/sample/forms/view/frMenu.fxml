@@ -39,10 +39,8 @@
                            <children>
                               <Pane prefHeight="98.0" prefWidth="708.0">
                                  <children>
-                                    <Label layoutX="143.0" layoutY="14.0" styleClass="label-bright" text="Resumo 1" />
-                                    <Label layoutX="499.0" layoutY="14.0" styleClass="label-bright" text="Resumo 2" />
-                                    <Label fx:id="lblResumo1" layoutX="143.0" layoutY="49.0" styleClass="label-bright" text="{Resumo1}" />
-                                    <Label fx:id="lblResumo2" layoutX="499.0" layoutY="49.0" styleClass="label-bright" text="{Resumo2}" />
+                                    <Label fx:id="lblResumo1" layoutX="123.0" layoutY="28.0" styleClass="label-bright" text="{Resumo1}" />
+                                    <Label fx:id="lblResumo2" layoutX="479.0" layoutY="28.0" styleClass="label-bright" text="{Resumo2}" />
                                  </children>
                               </Pane>
                            </children>
