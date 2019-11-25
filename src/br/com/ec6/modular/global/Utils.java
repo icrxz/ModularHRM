@@ -19,13 +19,14 @@ public class Utils {
     public static void sendEmailNotification(String emailTo, Event event){
         String body, subject;
         subject = "Novo Evento criada";
-        body = "Teste";
+        body = "Ola "+event.getResponsibleTeamMember().getMember().getName()+"\n Houve uma atualização no Evento: "+event.getName();
         sendEmail(emailTo, body, subject);
     }
     public static void sendEmailNotification(String emailTo, Task event){
         String body, subject;
         subject = "Nova Tarefa criada";
-        body = "Teste";
+        body = "Ola "+event.getAssignedTo().getMember().getName()+" houve uma atualização na tarefa: "+event.getName();
+        //body = "teste";
         sendEmail(emailTo, body, subject);
     }
     private static void sendEmail(String toEmail, String body, String subject){
