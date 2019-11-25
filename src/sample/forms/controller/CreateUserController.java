@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import org.hibernate.exception.ConstraintViolationException;
 import sample.Screens;
 
 import java.awt.color.ProfileDataException;
@@ -101,7 +102,10 @@ public class CreateUserController implements Initializable {
 
             MostraAlerta("Usuário cadastrado com sucesso!");
             Screens.stage.close();
-        }catch(Exception ex){
+        }catch (ConstraintViolationException ex){
+            MostraAlerta("Usuário já cadastrado!");
+        }
+        catch(Exception ex){
             MostraAlerta(ex.getMessage());
         }
     }
