@@ -61,7 +61,7 @@ public class MenuController implements Initializable {
             this.lblDesc.setText("");
         });
         this.btnAgenda.setOnMouseClicked((MouseEvent e) -> {
-            ExecutaTela("forms/view/frMenuTasks.fxml", null);
+            ExecutaTela("forms/view/frCRUD.fxml", Event.class);
         });
 
         this.btnAnalytics.setOnMouseEntered((MouseEvent e) -> {

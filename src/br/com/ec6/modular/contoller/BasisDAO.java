@@ -1,5 +1,6 @@
 package br.com.ec6.modular.contoller;
 
+import br.com.ec6.modular.global.SingletonUserLogged;
 import br.com.ec6.modular.model.Basis;
 import br.com.ec6.modular.model.User;
 import org.hibernate.Criteria;
@@ -9,6 +10,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +62,9 @@ public abstract class BasisDAO <E extends Basis> {
     }
 
     public void Altera(E entidade){
+        entidade.setLastModifiedbyId(SingletonUserLogged.getId());
+        entidade.setLastModifiedDate(LocalDateTime.now());
+
         EntityManager manager = getConnection();
         manager.getTransaction().begin();
         manager.merge(entidade);

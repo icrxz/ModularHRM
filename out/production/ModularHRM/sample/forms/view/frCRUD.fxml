@@ -11,9 +11,8 @@
 <AnchorPane prefHeight="400.0" prefWidth="744.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.controller.CRUDController">
    <children>
       <Label fx:id="lblObjectName" layoutX="14.0" layoutY="14.0" styleClass="label-header" text="{Objeto}" />
-      <Button fx:id="btnNovo" layoutX="608.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="95.0" text="Novo" />
-      <Button fx:id="btnDelete" layoutX="608.0" layoutY="69.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="95.0" text="Deletar" />
-      <TableView fx:id="tbData" editable="true" layoutX="14.0" layoutY="109.0" prefHeight="279.0" prefWidth="718.0">
+      <Button fx:id="btnNovo" layoutX="601.0" layoutY="28.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="95.0" text="Novo" />
+      <TableView fx:id="tbData" editable="true" layoutX="14.0" layoutY="80.0" prefHeight="308.0" prefWidth="718.0">
         <columns>
           <TableColumn fx:id="clId" editable="false" prefWidth="75.0" resizable="false" text="Id" />
         </columns>

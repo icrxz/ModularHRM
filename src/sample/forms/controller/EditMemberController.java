@@ -1,6 +1,7 @@
 package sample.forms.controller;
 
 import br.com.ec6.modular.contoller.MemberDAO;
+import br.com.ec6.modular.global.SingletonRowData;
 import br.com.ec6.modular.model.Member;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,12 +9,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import sample.Screens;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CRUDMemberController implements Initializable {
+public class EditMemberController implements Initializable {
+    private Member mRow;
+    private Stage janela;
 
     @FXML
     private TextField txtNome;
@@ -30,22 +34,28 @@ public class CRUDMemberController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        mRow = (Member) SingletonRowData.RowData;
+        janela = Screens.stage;
         Screens.stage.setResizable(false);
         Screens.stage.setMaximized(false);
-        Screens.stage.setTitle("Modular HRM - Membros");
+        Screens.stage.setTitle("Modular HRM - Editar membro");
+
+        txtCargo.setText(mRow.getRole());
+        txtEmail.setText(mRow.getEmail());
+        txtNome.setText(mRow.getName());
+        txtPhone.setText(mRow.getPhone());
 
         this.btnCriarMembro.setOnMouseClicked((MouseEvent e) -> {
-            AdicionaMembro();
+            EditaMembro();
         });
 
         this.btnCancelar.setOnMouseClicked((MouseEvent e) -> {
-            Screens.stage.close();
+            janela.close();
         });
     }
 
-    private void AdicionaMembro(){
+    private void EditaMembro(){
         try{
-            Member member = new Member();
             MemberDAO mDAO = new MemberDAO();
 
             String nome = txtNome.getText().trim();
@@ -54,23 +64,23 @@ public class CRUDMemberController implements Initializable {
             String telefone = txtPhone.getText().trim();
 
             if(nome.length() > 0)
-                member.setName(nome);
+                mRow.setName(nome);
             else
                 throw new Exception("Digite um nome!");
             if(email.length() > 0)
-                member.setEmail(email);
+                mRow.setEmail(email);
             else
                 throw new Exception("Digite um email!");
             if(cargo.length() > 0)
-                member.setRole(cargo);
+                mRow.setRole(cargo);
             else
                 throw new Exception("Digite um cargo!");
-            member.setPhone(telefone);
+            mRow.setPhone(telefone);
 
-            mDAO.Insere(member);
+            mDAO.Altera(mRow);
 
             MostraAlerta("Membro cadastrado com sucesso!");
-            Screens.stage.close();
+            janela.close();
         }catch(Exception ex){
             MostraAlerta(ex.getMessage());
         }

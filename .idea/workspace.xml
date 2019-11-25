@@ -2,10 +2,57 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e409403b-02fb-4010-b7f5-e0b9372a0287" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/forms/view/frEditEvent.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/forms/view/frEditTask.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/br/com/ec6/modular/global/SingletonRowData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/forms/controller/EditEventController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/forms/controller/EditMemberController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/forms/controller/EditProjectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/forms/controller/EditTaskController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/forms/controller/EditTeamController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/forms/controller/EditUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/forms/view/frCreateTasks.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/view/frCreateTasks.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CriaBanco.sql" beforeDir="false" afterPath="$PROJECT_DIR$/CriaBanco.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/dao/BasisDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/dao/EventDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/dao/ProfilesDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/dao/TaskDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/dao/TeamDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/dao/TeamMemberDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/dao/UsersDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/Basis.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/Event.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/Member.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/Profile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/Project.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/Task.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/Team.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/TeamMember.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/entities/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/global/SingletonUserLogged.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ModularHRM/br/com/ec6/modular/global/SingletonUserLogged.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ModularHRM/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/sample/controllers/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/FrCRUDProject.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/FrCRUDProject.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/FrCRUDTeam.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/FrCRUDTeam.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/frCRUD.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/frCRUD.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/frConfig.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/frConfig.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/frCreateEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/frCreateEvent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/frCreateTasks.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/frCreateTasks.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/frCreateUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/frCreateUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/frLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ModularHRM/sample/forms/view/frLogin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/com/ec6/modular/contoller/BasisDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/ec6/modular/contoller/BasisDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/com/ec6/modular/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/com/ec6/modular/model/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forms/controller/CRUDController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/controller/CRUDController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forms/controller/CRUDMemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/controller/CRUDMemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forms/controller/CRUDTeamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/controller/CRUDTeamController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forms/controller/CreateEventContoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/controller/CreateEventContoller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forms/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forms/controller/MenuTasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/controller/MenuTasksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forms/view/frCreateEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/view/frCreateEvent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forms/view/frEditEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/view/frEditEvent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forms/view/frEditMember.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/view/frEditMember.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forms/view/frEditProject.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/view/frEditProject.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forms/view/frEditTask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/view/frEditTask.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forms/view/frEditTeam.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/view/frEditTeam.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/forms/view/frEditUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/forms/view/frEditUser.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +63,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -97,9 +144,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$PROJECT_DIR$/lib/hibernate-core-5.4.2.Final.jar!/org/hibernate/internal/SessionFactoryImpl.class</url>
-          <line>530</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/src/sample/forms/controller/EditUserController.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sample/forms/controller/CreateEventContoller.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

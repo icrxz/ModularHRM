@@ -1,6 +1,7 @@
 package sample.forms.controller;
 
 import br.com.ec6.modular.contoller.*;
+import br.com.ec6.modular.global.SingletonRowData;
 import br.com.ec6.modular.model.*;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
@@ -11,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.hibernate.query.criteria.internal.expression.NullLiteralExpression;
 import sample.Screens;
 
 import java.net.URL;
@@ -20,8 +22,9 @@ import java.util.ResourceBundle;
 
 public class CRUDController implements Initializable {
     private String path;
-    private String pathEdit;
+    private String pathEdit = null;
     private Class classe;
+    private Basis rowData = null;
 
     @FXML
     private TableView tbData;
@@ -41,7 +44,7 @@ public class CRUDController implements Initializable {
 
         TableColumn<Basis, Integer> clId = new TableColumn<>("Id");
         clId.setCellValueFactory(f -> new ReadOnlyObjectWrapper<Integer>(f.getValue().getId()));
-        clId.setMinWidth(40.0);
+        clId.setPrefWidth(40.0);
         clId.setResizable(false);
         clId.setEditable(false);
         tbData.getColumns().addAll(clId);
@@ -60,6 +63,7 @@ public class CRUDController implements Initializable {
             EventDAO eDAO = new EventDAO();
             lblObjectName.setText("Evento");
             path = "forms/view/frCreateEvent.fxml";
+            pathEdit = "forms/view/frEditEvent.fxml";
             obserList = FXCollections.observableList(eDAO.SelecionaTodos(Event.class));
 
             TableColumn<Event, String> clEventName = new TableColumn("Nome");
@@ -74,11 +78,17 @@ public class CRUDController implements Initializable {
             clEventDescription.setResizable(true);
             clEventDescription.setEditable(false);
 
-            TableColumn<Event, String> clEventDate = new TableColumn("Data");
-            clEventDate.setCellValueFactory(f -> new ReadOnlyObjectWrapper<String>(f.getValue().getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))));
-            clEventDate.setMinWidth(100.0);
-            clEventDate.setResizable(true);
-            clEventDate.setEditable(false);
+            TableColumn<Event, String> clEventDateStart = new TableColumn("Data Inicio");
+            clEventDateStart.setCellValueFactory(f -> new ReadOnlyObjectWrapper<String>(f.getValue().getDateStart().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))));
+            clEventDateStart.setMinWidth(100.0);
+            clEventDateStart.setResizable(true);
+            clEventDateStart.setEditable(false);
+
+            TableColumn<Event, String> clEventDateEnd = new TableColumn("Data Final");
+            clEventDateEnd.setCellValueFactory(f -> new ReadOnlyObjectWrapper<String>(f.getValue().getDateEnd().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))));
+            clEventDateEnd.setMinWidth(100.0);
+            clEventDateEnd.setResizable(true);
+            clEventDateEnd.setEditable(false);
 
             TableColumn<Event, String> clEventLocation = new TableColumn("Local");
             clEventLocation.setCellValueFactory(f -> new ReadOnlyStringWrapper(f.getValue().getLocation()));
@@ -98,12 +108,13 @@ public class CRUDController implements Initializable {
             clEventResponsibleMember.setResizable(true);
             clEventResponsibleMember.setEditable(false);
 
-            tbData.getColumns().addAll(clEventName, clEventDescription, clEventDate, clEventLocation, clEventType, clEventResponsibleMember);
+            tbData.getColumns().addAll(clEventName, clEventDescription, clEventDateStart, clEventDateEnd, clEventLocation, clEventType, clEventResponsibleMember);
         }
         else if(classe == Member.class){
             MemberDAO mDAO = new MemberDAO();
             lblObjectName.setText("Membro");
             path = "forms/view/frCRUDMember.fxml";
+            pathEdit = "forms/view/frEditMember.fxml";
             obserList = FXCollections.observableList(mDAO.SelecionaTodos(Member.class));
 
             TableColumn<Member, String> clMemberName = new TableColumn("Nome");
@@ -137,6 +148,7 @@ public class CRUDController implements Initializable {
             ProjectDAO pDAO = new ProjectDAO();
             lblObjectName.setText("Projeto");
             path = "forms/view/frCRUDProject.fxml";
+            pathEdit = "forms/view/frEditProject.fxml";
             obserList = FXCollections.observableList(pDAO.SelecionaTodos(Project.class));
 
             TableColumn<Project, String> clProjectName = new TableColumn("Nome");
@@ -164,6 +176,7 @@ public class CRUDController implements Initializable {
             TaskDAO tDAO = new TaskDAO();
             lblObjectName.setText("Tarefa");
             path = "forms/view/frCreateTasks.fxml";
+            pathEdit = "forms/view/frEditTask.fxml";
             obserList = FXCollections.observableList(tDAO.SelecionaTodos(Task.class));
 
             TableColumn<Task, String> clTaskName = new TableColumn("Nome");
@@ -208,6 +221,7 @@ public class CRUDController implements Initializable {
         else if(classe == Team.class){
             lblObjectName.setText("Time");
             path = "forms/view/frCRUDTeam.fxml";
+            pathEdit = "forms/view/frEditTeam.fxml";
             TeamDAO tDAO = new TeamDAO();
             obserList = FXCollections.observableList(tDAO.SelecionaTodos(Team.class));
 
@@ -275,6 +289,7 @@ public class CRUDController implements Initializable {
             UsersDAO uDAO = new UsersDAO();
             lblObjectName.setText("Usuario");
             path = "forms/view/frCreateUser.fxml";
+            pathEdit = "forms/view/frEditUser.fxml";
             obserList = FXCollections.observableList(uDAO.SelecionaTodos(User.class));
 
             TableColumn<User, String> clUserName = new TableColumn<>("Nome");
@@ -316,12 +331,41 @@ public class CRUDController implements Initializable {
             alert.getDialogPane().requestFocus();
             alert.getDialogPane().toFront();
         }
+
+        tbData.setRowFactory( tv -> {
+            TableRow<Basis> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    SingletonRowData sg = SingletonRowData.getInstance();
+                    sg.RowData = row.getItem();
+                    ExecutaTelaEdit();
+                }
+            });
+            return row ;
+        });
     }
 
     public void ExecutaTela() {
         try {
             Screens p = new Screens();
             p.setScreen(path);
+            p.start(new Stage());
+        } catch (Exception ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro!");
+            alert.setContentText(ex.getMessage());
+            alert.show();
+            alert.getDialogPane().requestFocus();
+            alert.getDialogPane().toFront();
+        }
+    }
+
+    public void ExecutaTelaEdit() {
+        try {
+            if(pathEdit.equals(null))
+                throw new Exception("Não é possível editar essa classe!");
+            Screens p = new Screens();
+            p.setScreen(pathEdit);
             p.start(new Stage());
         } catch (Exception ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

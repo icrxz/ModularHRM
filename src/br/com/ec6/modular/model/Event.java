@@ -13,8 +13,10 @@ public class Event extends Basis {
     private String Name;
     @Column(name = "Description")
     private String Description;
-    @Column(name = "Date")
-    private LocalDateTime Date;
+    @Column(name = "DateStart")
+    private LocalDateTime DateStart;
+    @Column(name = "DateEnd")
+    private LocalDateTime DateEnd;
     @Column(name = "Location")
     private String Location;
     @Column(name = "Type")
@@ -43,12 +45,20 @@ public class Event extends Basis {
         Description = description;
     }
 
-    public LocalDateTime getDate() {
-        return Date;
+    public LocalDateTime getDateStart() {
+        return DateStart;
     }
 
-    public void setDate(LocalDateTime date) {
-        Date = date;
+    public void setDateStart(LocalDateTime date) {
+        DateStart = date;
+    }
+
+    public LocalDateTime getDateEnd() {
+        return DateEnd;
+    }
+
+    public void setDateEnd(LocalDateTime dateEnd) {
+        DateEnd = dateEnd;
     }
 
     public String getLocation() {
@@ -85,7 +95,7 @@ public class Event extends Basis {
 
     @Override
     public String toString(){
-        return getName() + " - " + getDate().toString();
+        return getName() + " - " + getDateStart().toString();
     }
 
 }

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
@@ -7,32 +11,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="360.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.view.frEditProject">
+<AnchorPane prefHeight="400.0" prefWidth="360.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.controller.EditProjectController">
    <children>
-      <AnchorPane layoutY="1.0" prefHeight="360.0" prefWidth="411.0" styleClass="background" stylesheets="@DarkTheme.css">
-         <children>
-            <Label layoutX="77.0" layoutY="14.0" styleClass="label-header" text="Editar Projeto">
-               <font>
-                  <Font name="System Bold" size="72.0" />
-               </font>
-            </Label>
-            <Label layoutX="82.0" layoutY="90.0" text="Nome:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField id="txtUser" fx:id="txtNome" layoutX="80.0" layoutY="110.0" prefWidth="250.0" promptText="Nome" />
-            <Label layoutX="82.0" layoutY="160.0" text="Cliente:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField id="txtUser" fx:id="txtCliente" layoutX="80.0" layoutY="180.0" prefWidth="250.0" promptText="Cliente" />
-            <Button id="btnCriarUser" fx:id="btnCriarProject" layoutX="78.0" layoutY="282.0" mnemonicParsing="false" prefWidth="104.0" text="Salvar" />
-            <Button id="btnCanceluser" fx:id="btnCancelar" layoutX="225.0" layoutY="282.0" mnemonicParsing="false" text="Cancelar" />
-            <CheckBox fx:id="checkProject" layoutX="85.0" layoutY="243.0" mnemonicParsing="false" styleClass="label-bright" text="Projeto Concluido?" />
-         </children>
-      </AnchorPane>
+      <Label layoutX="52.0" layoutY="14.0" styleClass="label-header" text="Editar Projeto">
+         <font>
+            <Font name="System Bold" size="72.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="90.0" text="Nome:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField id="txtUser" fx:id="txtNome" layoutX="55.0" layoutY="110.0" prefWidth="250.0" promptText="Nome" />
+      <Label layoutX="57.0" layoutY="160.0" text="Cliente:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField id="txtUser" fx:id="txtCliente" layoutX="55.0" layoutY="180.0" prefWidth="250.0" promptText="Cliente" />
+      <CheckBox fx:id="checkProject" layoutX="60.0" layoutY="243.0" mnemonicParsing="false" styleClass="label-bright" text="Projeto Concluido?" />
+      <Button id="btnCriarUser" fx:id="btnEditar" layoutX="53.0" layoutY="282.0" mnemonicParsing="false" prefWidth="104.0" text="Salvar" />
+      <Button id="btnCanceluser" fx:id="btnCancelar" layoutX="200.0" layoutY="282.0" mnemonicParsing="false" text="Cancelar" />
    </children>
 </AnchorPane>

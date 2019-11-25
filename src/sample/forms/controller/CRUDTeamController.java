@@ -77,7 +77,7 @@ public class CRUDTeamController implements Initializable {
             if(name.length() > 0)
                 t.setName(name);
             else
-                throw new Exception("Digite um nome para o projeto!");
+                throw new Exception("Digite um nome para o time!");
 
             if (cbProjeto.getItems() != null)
                 t.setProject(cbProjeto.getValue());

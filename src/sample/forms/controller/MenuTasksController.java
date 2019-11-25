@@ -4,6 +4,7 @@ import br.com.ec6.modular.global.SingletonUserLogged;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import sample.Screens;
 
 import java.net.URL;
