@@ -10,8 +10,8 @@
 
 <AnchorPane prefHeight="490.0" prefWidth="530.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.controller.CreateEventContoller">
    <children>
-      <Label layoutX="143.0" layoutY="14.0" styleClass="label-header" text="Criar Evento" />
-      <Label layoutX="33.0" layoutY="154.0" text="Tipo:" />
+      <Label layoutX="151.0" layoutY="14.0" styleClass="label-header" text="Criar Evento" />
+      <Label layoutX="34.0" layoutY="284.0" text="Tipo:" />
       <Label layoutX="35.0" layoutY="213.0" text="Local:" />
       <Label layoutX="35.0" layoutY="280.0" text="Membro:" />
       <Label layoutX="284.0" layoutY="86.0" text="Data/Hora Inicio:" />
@@ -27,5 +27,8 @@
       <ComboBox fx:id="cbTipo" layoutX="35.0" layoutY="175.0" prefHeight="30.0" prefWidth="200.0" />
       <ComboBox fx:id="cbTeamMember" layoutX="35.0" layoutY="305.0" prefHeight="30.0" prefWidth="200.0" />
       <Label layoutX="35.0" layoutY="86.0" text="Evento:" />
+      <TextField layoutX="283.0" layoutY="175.0" />
+      <Label layoutX="35.0" layoutY="152.0" text="Hora Inicio:" />
+      <TextField layoutX="36.0" layoutY="175.0" />
    </children>
 </AnchorPane>
