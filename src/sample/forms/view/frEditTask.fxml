@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="624.0" prefWidth="443.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.controller.EditTaskController">
+   <children>
+      <Label layoutX="99.0" layoutY="14.0" styleClass="label-header" text="Editar Tarefas" />
+      <Label layoutX="56.0" layoutY="76.0" text="Nome:" />
+      <TextField fx:id="txtNome" layoutX="54.0" layoutY="96.0" prefHeight="35.0" prefWidth="336.0" />
+      <Label layoutX="54.0" layoutY="146.0" text="Evento:" />
+      <ComboBox fx:id="cbEvento" layoutX="54.0" layoutY="166.0" prefHeight="35.0" prefWidth="336.0" />
+      <Label layoutX="56.0" layoutY="216.0" text="Membro:" />
+      <ComboBox fx:id="cbMembro" layoutX="54.0" layoutY="236.0" prefHeight="35.0" prefWidth="336.0" />
+      <Label layoutX="56.0" layoutY="286.0" text="Data de finalização:" />
+      <DatePicker fx:id="dtDataFin" layoutX="54.0" layoutY="306.0" prefHeight="35.0" prefWidth="336.0" />
+      <Label layoutX="56.0" layoutY="356.0" text="Descrição:" />
+      <TextArea fx:id="txtDesc" layoutX="54.0" layoutY="376.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="116.0" prefWidth="336.0" wrapText="true" />
+      <CheckBox fx:id="checkTask" layoutX="60.0" layoutY="509.0" mnemonicParsing="false" styleClass="label-bright" text="Tarefa Concluida?" />
+      <Button id="brtCreateTask" fx:id="btnEditar" layoutX="60.0" layoutY="553.0" mnemonicParsing="false" prefWidth="105.0" text="Salvar" />
+      <Button id="btnCancel" fx:id="btnCancelar" layoutX="285.0" layoutY="553.0" mnemonicParsing="false" prefWidth="105.0" text="Cancelar" />
+   </children>
+</AnchorPane>

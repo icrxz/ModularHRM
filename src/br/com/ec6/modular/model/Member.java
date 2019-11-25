@@ -51,4 +51,9 @@ public class Member extends Basis {
     public void setPhone(String phone) {
         Phone = phone;
     }
+
+    @Override
+    public String toString(){
+        return getName();
+    }
 }

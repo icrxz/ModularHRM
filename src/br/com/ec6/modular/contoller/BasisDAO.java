@@ -1,11 +1,16 @@
 package br.com.ec6.modular.contoller;
 
+import br.com.ec6.modular.global.SingletonUserLogged;
 import br.com.ec6.modular.model.Basis;
+import br.com.ec6.modular.model.User;
+import org.hibernate.Criteria;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,17 +33,23 @@ public abstract class BasisDAO <E extends Basis> {
         throw new UnsupportedOperationException("Implementar na classe filha.");
     }
 
-    public List<E> SelecionaTodos(Class c){
-        String queryStr = "SELECT * FROM " + Tabela;
-        List<E> listObjects = new ArrayList<>();
-        EntityManager manager = getConnection();
-        Query query = manager.createQuery(queryStr);
+    public List<Basis> SelecionaTodos(Class cls){
+        EntityManager em = getConnection();
+                try{
+                    CriteriaBuilder cb = em.getCriteriaBuilder();
 
-        listObjects = query.getResultList();
+                    CriteriaQuery<Basis> q = cb.createQuery(cls);
+                    Root<Basis> root = q.from(cls);
+                    q.select(root);
 
-        manager.close();
+                    TypedQuery<Basis> query = em.createQuery(q);
+                    List<Basis> results = query.getResultList();
 
-        return listObjects;
+                    return results;
+                }
+                finally {
+                    em.close();
+                }
     }
 
     public void Insere(E entidade){
@@ -51,6 +62,9 @@ public abstract class BasisDAO <E extends Basis> {
     }
 
     public void Altera(E entidade){
+        entidade.setLastModifiedbyId(SingletonUserLogged.getId());
+        entidade.setLastModifiedDate(LocalDateTime.now());
+
         EntityManager manager = getConnection();
         manager.getTransaction().begin();
         manager.merge(entidade);

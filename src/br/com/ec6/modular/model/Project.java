@@ -34,11 +34,24 @@ public class Project extends Basis{
         CustomerName = customerName;
     }
 
+    public Boolean getProjectCompleted() {
+        return ProjectCompleted;
+    }
+
+    public void setProjectCompleted(Boolean projectCompleted) {
+        ProjectCompleted = projectCompleted;
+    }
+
     public List<Team> getTeams() {
         return Teams;
     }
 
     public void setTeams(List<Team> teams) {
         Teams = teams;
+    }
+
+    @Override
+    public String toString(){
+        return this.getName();
     }
 }

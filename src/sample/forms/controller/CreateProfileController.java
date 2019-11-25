@@ -1,0 +1,82 @@
+package sample.forms.controller;
+
+import br.com.ec6.modular.contoller.ProfileDAO;
+import br.com.ec6.modular.model.Profile;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import sample.Screens;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class CreateProfileController implements Initializable {
+    @FXML
+    private TextField txtNome;
+    @FXML
+    private ComboBox<String> cbPermission;
+    @FXML
+    private Button btnCriar;
+    @FXML
+    private Button btnCancelar;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Screens.stage.setResizable(false);
+        Screens.stage.setMaximized(false);
+        Screens.stage.setTitle("Modular HRM - Perfil");
+
+        String[] permissionArray = {"Gerente", "Diretor", "Administrador"};
+        cbPermission.getItems().addAll(permissionArray);
+
+        this.btnCriar.setOnMouseClicked((MouseEvent e) -> {
+            CriaPerfil();
+        });
+
+        this.btnCancelar.setOnMouseClicked((MouseEvent e) -> {
+            Screens.stage.close();
+        });
+    }
+
+    private void CriaPerfil(){
+        try {
+            Profile p = new Profile();
+            ProfileDAO pDAO = new ProfileDAO();
+
+            String name = txtNome.getText().trim();
+            String permission = cbPermission.getValue();
+
+            if (name.length() > 0)
+                p.setName(name);
+            else
+                throw new Exception("Digite um nome para o perfil!");
+            if(permission.length() > 0)
+                p.setPermissionLevel(permission);
+            else
+                throw new Exception("Escolha a permissão!");
+
+            pDAO.Insere(p);
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Erro!");
+            alert.setContentText("Perfil criado com sucesso!");
+            alert.getDialogPane().toFront();
+            alert.getDialogPane().requestFocus();
+            alert.showAndWait();
+
+            Screens.stage.close();
+
+        }catch(Exception ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro!");
+            alert.setContentText(ex.getMessage());
+            alert.showAndWait();
+            alert.getDialogPane().toFront();
+            alert.getDialogPane().requestFocus();
+        }
+    }
+}

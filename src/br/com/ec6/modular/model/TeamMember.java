@@ -43,4 +43,9 @@ public class TeamMember extends Basis{
     public void setEvents(List<Event> events) {
         this.events = events;
     }
+
+    @Override
+    public String toString(){
+        return getMember().getName() + " - " + getTeam().getName();
+    }
 }

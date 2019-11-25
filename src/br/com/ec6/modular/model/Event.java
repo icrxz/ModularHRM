@@ -2,6 +2,8 @@ package br.com.ec6.modular.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tbEvent")
@@ -11,8 +13,10 @@ public class Event extends Basis {
     private String Name;
     @Column(name = "Description")
     private String Description;
-    @Column(name = "Date")
-    private LocalDateTime Date;
+    @Column(name = "DateStart")
+    private LocalDateTime DateStart;
+    @Column(name = "DateEnd")
+    private LocalDateTime DateEnd;
     @Column(name = "Location")
     private String Location;
     @Column(name = "Type")
@@ -21,6 +25,9 @@ public class Event extends Basis {
     @ManyToOne
     @JoinColumn(name = "ResponsibleTeamMember")
     private TeamMember ResponsibleTeamMember;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "RelatedEvent")
+    private List<Task> Tarefas = new ArrayList<>();
 
     public String getName() {
         return Name;
@@ -38,12 +45,20 @@ public class Event extends Basis {
         Description = description;
     }
 
-    public LocalDateTime getDate() {
-        return Date;
+    public LocalDateTime getDateStart() {
+        return DateStart;
     }
 
-    public void setDate(LocalDateTime date) {
-        Date = date;
+    public void setDateStart(LocalDateTime date) {
+        DateStart = date;
+    }
+
+    public LocalDateTime getDateEnd() {
+        return DateEnd;
+    }
+
+    public void setDateEnd(LocalDateTime dateEnd) {
+        DateEnd = dateEnd;
     }
 
     public String getLocation() {
@@ -68,6 +83,19 @@ public class Event extends Basis {
 
     public void setResponsibleTeamMember(TeamMember responsibleTeamMember) {
         ResponsibleTeamMember = responsibleTeamMember;
+    }
+
+    public List<Task> getTarefas() {
+        return Tarefas;
+    }
+
+    public void setTarefas(List<Task> tarefas) {
+        Tarefas = tarefas;
+    }
+
+    @Override
+    public String toString(){
+        return getName() + " - " + getDateStart().toString();
     }
 
 }

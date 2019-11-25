@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane prefHeight="345.0" prefWidth="297.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.view.FrCRUDProject">
+
+<AnchorPane prefHeight="345.0" prefWidth="297.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.controller.CRUDProjectController">
    <children>
-      <Label layoutX="70.0" styleClass="label-header" text="Projeto" />
-      <TextField fx:id="txtProjeto" layoutX="52.0" layoutY="97.0" promptText="Nome" />
-      <TextField fx:id="txtCliente" layoutX="52.0" layoutY="177.0" promptText="Cliente" />
+      <Label layoutX="84.0" styleClass="label-header" text="Projeto" />
       <Label layoutX="52.0" layoutY="76.0" text="Nome do Projeto" />
+      <TextField fx:id="txtProjeto" layoutX="52.0" layoutY="97.0" promptText="Nome" />
       <Label layoutX="52.0" layoutY="156.0" text="Nome do Cliente" />
+      <TextField fx:id="txtCliente" layoutX="52.0" layoutY="177.0" promptText="Cliente" />
       <Button fx:id="btnCriarProjeto" layoutX="103.0" layoutY="255.0" mnemonicParsing="false" text="Criar" />
    </children>
 </AnchorPane>

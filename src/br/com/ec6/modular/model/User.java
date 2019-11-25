@@ -57,4 +57,9 @@ public class User extends Basis {
     public void setEmail(String email) {
         Email = email;
     }
+
+    @Override
+    public String toString(){
+        return getName();
+    }
 }

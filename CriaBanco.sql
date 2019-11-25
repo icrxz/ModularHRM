@@ -6,7 +6,7 @@ GO
 
 CREATE TABLE tbProfile(
 	Id int PRIMARY KEY IDENTITY(1,1),
-	Name VARCHAR(100) NOT NULL,
+	Name VARCHAR(100) NOT NULL UNIQUE,
 	PermissionLevel VARCHAR(100) NOT NULL,
 	CreatedDate DATETIME, 
 	LastModifiedDate DATETIME,
@@ -38,7 +38,7 @@ ADD CONSTRAINT FK_Profile_User_CreateById FOREIGN KEY (CreateById) REFERENCES tb
 
 CREATE TABLE tbProject(
 	Id int PRIMARY KEY IDENTITY(1,1),
-	Name VARCHAR(100),
+	Name VARCHAR(100) UNIQUE,
 	CustomerName VARCHAR(100),
 	CreatedDate DATETIME, 
 	LastModifiedDate DATETIME,
@@ -52,7 +52,7 @@ GO
 
 CREATE TABLE tbTeam(
 	Id int PRIMARY KEY IDENTITY(1,1),
-	Name VARCHAR(100),
+	Name VARCHAR(100) UNIQUE,
 	CreatedDate DATETIME, 
 	LastModifiedDate DATETIME,
 	Manager int not null, 
@@ -68,9 +68,9 @@ GO
 
 CREATE TABLE tbMember(
 	Id int PRIMARY KEY IDENTITY(1, 1),
-	Name VARCHAR(100),
+	Name VARCHAR(100) UNIQUE,
 	Role VARCHAR(100),
-	Email VARCHAR(100),
+	Email VARCHAR(100) UNIQUE,
 	Phone VARCHAR(15),
 	CreatedDate DATETIME, 
 	LastModifiedDate DATETIME,
@@ -100,8 +100,9 @@ GO
 CREATE TABLE tbEvent(
 	Id int PRIMARY KEY IDENTITY(1,1),
 	Name VARCHAR(100) NOT NULL,
-	Description VARCHAR(100) NOT NULL,
-	Date Datetime,
+	Description VARCHAR(max) NOT NULL,
+	DateStart Datetime,
+	DateEnd Datetime,
 	Location VARCHAR(100),
 	Type VARCHAR(100),
 	CreatedDate DATETIME, 
@@ -118,12 +119,12 @@ GO
 CREATE TABLE tbTask(
 	Id int PRIMARY KEY IDENTITY(1,1),
 	Name VARCHAR(100),
-	Description VARCHAR(100),
+	Description VARCHAR(max),
 	DueDate	DATETIME, 	
 	TaskCompleted BIT,  
 	AssignedTo int not null, 
 	CONSTRAINT FK_Task_AssignedToMember FOREIGN KEY (AssignedTo) REFERENCES tbTeamMember(Id),
-	RelatedEvent int not null, 
+	RelatedEvent int,
 	CONSTRAINT FK_Task_Event FOREIGN KEY (RelatedEvent) REFERENCES tbEvent(Id),
 	CreatedDate DATETIME, 
 	LastModifiedDate DATETIME,
