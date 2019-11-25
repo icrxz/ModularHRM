@@ -23,3 +23,9 @@
 hs_err_pid*
 ModularHRM/out/production/ModularHRM/META-INF/persistence.xml
 ModularHRM/src/META-INF/persistence.xml
+.idea/ModularHRM.iml
+out/production/ModularHRM/META-INF/persistence.xml
+src/META-INF/persistence.xml
+.idea/libraries/Hibernate.xml
+.idea/libraries/com_microsoft_sqlserver_mssql_jdbc_7_4_0_jre8.xml
+.idea/libraries/org_hibernate_hibernate_core_5_4_2_Final.xml
