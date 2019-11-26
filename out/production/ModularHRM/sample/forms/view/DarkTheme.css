@@ -117,16 +117,20 @@
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
-.buttonhover {
+.button-menu:hover {
     -fx-background-color: #3a3a3a;
 }
 
-.buttonpressed, .buttondefaulthoverpressed {
+.button:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+.button:pressed, .buttondefault:hover:pressed {
   -fx-background-color: white;
   -fx-text-fill: #1d1d1d;
 }
 
-.buttonfocused {
+.button:focused {
     -fx-border-color: white, white;
     -fx-border-width: 1, 1;
     -fx-border-style: solid, segments(1, 1);
@@ -134,18 +138,18 @@
     -fx-border-insets: 1 1 1 1, 0;
 }
 
-.buttondisabled, .buttondefaultdisabled {
+.button-disabled, .buttondefaultdisabled {
     -fx-opacity: 0.4;
     -fx-background-color: #1d1d1d;
     -fx-text-fill: white;
 }
 
-.buttondefault {
+.button-default {
     -fx-background-color: -fx-focus-color;
     -fx-text-fill: #ffffff;
 }
 
-.buttondefaulthover {
+.button-default:hover {
     -fx-background-color: derive(-fx-focus-color,30%);
 }
 

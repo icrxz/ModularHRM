@@ -77,20 +77,36 @@ public class EditTaskController implements Initializable {
             String desc = txtDesc.getText();
             LocalDateTime data = dtDataFin.getValue().atStartOfDay();
 
-            tRow.setName(nome);
-            tRow.setDescription(desc);
-            tRow.setDueDate(data);
+            if(nome.length() > 0)
+                tRow.setName(nome);
+            else
+                throw new Exception("Digite um nome para a tarefa!");
+            if(desc.length() > 0)
+                tRow.setDescription(desc);
+            else
+                throw new Exception("Digite a descrição da tarefa!");
+            if(!data.equals(null)) {
+                if (LocalDateTime.now().isAfter(data))
+                    throw new Exception("A data de entrega não pode ser anterior a data atual!");
+                tRow.setDueDate(data);
+            }
+            else
+                throw new Exception("Selecione uma data de entrega da tarefa!");
             tRow.setRelatedEvent(evento);
             tRow.setTaskCompleted(checkTask.isSelected());
-            tRow.setAssignedTo(membro);
+
+            if(membro != null)
+                tRow.setAssignedTo(membro);
+            else
+                throw new Exception("Selecione um membro!");
 
             tDAO.Altera(tRow);
-            MostraAlerta("Tarefa alterada com sucesso!");
+            Utils.MostraAlerta("Sucesso!", "Tarefa alterada com sucesso!", Alert.AlertType.INFORMATION);
             Utils.sendEmailNotification(membro.getMember().getEmail(), tRow, false);
-            MostraAlerta("E-mail enviado com sucesso!");
+            Utils.MostraAlerta("Sucesso!", "E-mail enviado com sucesso!", Alert.AlertType.INFORMATION);
             janela.close();
         }catch (Exception ex){
-            MostraAlerta(ex.getMessage());
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
@@ -103,14 +119,5 @@ public class EditTaskController implements Initializable {
 
         cbMembro.getItems().addAll(mDAO.SelecionaTodos(TeamMember.class));
         cbEvento.getItems().addAll(eDAO.EventosAtivos());
-    }
-
-    private void MostraAlerta(String message){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Aviso!");
-        alert.setContentText(message);
-        alert.getDialogPane().requestFocus();
-        alert.getDialogPane().toFront();
-        alert.showAndWait();
     }
 }

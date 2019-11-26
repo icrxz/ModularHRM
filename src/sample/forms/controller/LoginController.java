@@ -2,6 +2,7 @@ package sample.forms.controller;
 
 import br.com.ec6.modular.contoller.UsersDAO;
 import br.com.ec6.modular.global.SingletonUserLogged;
+import br.com.ec6.modular.global.Utils;
 import br.com.ec6.modular.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,14 +35,6 @@ public class LoginController implements Initializable {
         Screens.stage.setMaximized(false);
         Screens.stage.setTitle("Modular HRM - Login");
 
-        btnEntrar.setOnMouseEntered((MouseEvent e) -> {
-           btnEntrar.setStyle("-fx-background-color: #3a3a3a;");
-         });
-
-        btnEntrar.setOnMouseExited((MouseEvent e) -> {
-            btnEntrar.setStyle("-fx-background-color: #1d1d1d;");
-        });
-
         btnEntrar.setOnMouseClicked((MouseEvent e) -> {
             Entrar();
         });
@@ -62,20 +55,17 @@ public class LoginController implements Initializable {
             if(e.getCode() == KeyCode.F7)
             {
                 try{
-                Screens p = new Screens();
-                p.setScreen("forms/view/frConfigDatabase.fxml");
-                p.start(new Stage());
+                    Screens p = new Screens();
+                    p.setScreen("forms/view/frConfigDatabase.fxml");
+                    p.start(new Stage());
                 }catch (Exception ex){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Erro!");
-                    alert.setContentText(ex.getMessage());
-                    alert.show();
+                    Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
                 }
             }
         });
     }
 
-    public void Entrar() {
+    private void Entrar() {
         try {
             UsersDAO uDao = new UsersDAO();
             String login = txtLogin.getText().trim();
@@ -83,7 +73,6 @@ public class LoginController implements Initializable {
             User u = uDao.Login(login, senha);
 
             if (u != null) {
-
                 SingletonUserLogged sul = SingletonUserLogged.getInstance();
                 sul.UserLogged = u;
                 Screens p = new Screens();
@@ -91,16 +80,11 @@ public class LoginController implements Initializable {
                 janela.close();
                 p.start(new Stage());
             }else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erro!");
-                alert.setContentText("Usuário não cadastrado, verifique o login e a senha!");
-                alert.show();
+                String message = "Usuário não cadastrado, verifique o login e a senha!";
+                Utils.MostraAlerta("Erro!", message, Alert.AlertType.INFORMATION);
             }
         } catch (Exception ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro!");
-            alert.setContentText(ex.getMessage());
-            alert.show();
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 

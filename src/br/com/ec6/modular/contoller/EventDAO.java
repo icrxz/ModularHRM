@@ -45,11 +45,12 @@ public class EventDAO extends BasisDAO{
             CriteriaQuery<Event> criteria = builder.createQuery(Event.class);
             Root<Event> root = criteria.from(Event.class);
 
-            Predicate onStart = builder.lessThanOrEqualTo(root.get("DateStart"), e.getDateStart());
-            Predicate onEnd = builder.greaterThanOrEqualTo(root.get("DateEnd"), e.getDateStart());
+            Predicate InicialonStart = builder.lessThanOrEqualTo(root.get("DateStart"), e.getDateStart());
+            Predicate InicialonEnd = builder.greaterThanOrEqualTo(root.get("DateEnd"), e.getDateStart());
+
             Predicate memberEvento = builder.equal(root.get("ResponsibleTeamMember"), e.getResponsibleTeamMember());
 
-            criteria.where(builder.and(onStart, onEnd, memberEvento));
+            criteria.where(builder.and(InicialonStart, InicialonEnd, memberEvento));
 
             Event result = em.createQuery(criteria).getSingleResult();
 

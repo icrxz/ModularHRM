@@ -107,12 +107,23 @@ public class EditEventController implements Initializable {
 
             if(name.length() > 0)
                 eRow.setName(name);
+            else
+                throw new Exception("Digite um nome para o evento!");
+
             eRow.setLocation(location);
+
             if(desc.length() > 0)
                 eRow.setDescription(desc);
+            else
+                throw new Exception("Digite uma descrição para o evento!");
+
             eRow.setDateStart(dateS);
             eRow.setDateEnd(dateE);
-            eRow.setType(type);
+
+            if(type.length() > 0)
+                eRow.setType(type);
+            else
+                throw new Exception("Digite um tipo para o evento!");
             if(member != null)
                 eRow.setResponsibleTeamMember(member);
             else
@@ -122,12 +133,12 @@ public class EditEventController implements Initializable {
                 throw new Exception("Evento em duplicidade!");
 
             eDAO.Altera(eRow);
-            MostraAlerta("Evento alterado com sucesso!");
+            Utils.MostraAlerta("Sucesso!", "Membro Evento alterado com sucesso!", Alert.AlertType.INFORMATION);
             Utils.sendEmailNotification(eRow.getResponsibleTeamMember().getMember().getEmail(), eRow, false);
-            MostraAlerta("E-mail enviado com sucesso!");
+            Utils.MostraAlerta("Sucesso!", "E-mail enviado com sucesso!", Alert.AlertType.INFORMATION);
             Screens.stage.close();
         }catch (Exception ex){
-            MostraAlerta(ex.getMessage());
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
@@ -136,14 +147,5 @@ public class EditEventController implements Initializable {
 
         cbTeamMember.getItems().clear();
         cbTeamMember.getItems().addAll(mDAO.SelecionaTodos(TeamMember.class));
-    }
-
-    private void MostraAlerta(String message){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Aviso!");
-        alert.setContentText(message);
-        alert.getDialogPane().requestFocus();
-        alert.getDialogPane().toFront();
-        alert.showAndWait();
     }
 }

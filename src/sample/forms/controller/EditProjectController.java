@@ -2,6 +2,7 @@ package sample.forms.controller;
 
 import br.com.ec6.modular.contoller.ProjectDAO;
 import br.com.ec6.modular.global.SingletonRowData;
+import br.com.ec6.modular.global.Utils;
 import br.com.ec6.modular.model.Project;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -72,17 +73,11 @@ public class EditProjectController implements Initializable {
 
             pDao.Altera(pRow);
 
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Sucesso!");
-            alert.setContentText(("Projeto alterado com sucesso!"));
-            alert.showAndWait();
+            Utils.MostraAlerta("Sucesso!", "Projeto alterado com sucesso!", Alert.AlertType.INFORMATION);
 
             Screens.stage.close();
         }catch (Exception ex){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro!");
-            alert.setContentText(ex.getMessage());
-            alert.showAndWait();
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 }

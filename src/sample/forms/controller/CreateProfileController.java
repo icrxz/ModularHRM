@@ -1,6 +1,7 @@
 package sample.forms.controller;
 
 import br.com.ec6.modular.contoller.ProfileDAO;
+import br.com.ec6.modular.global.Utils;
 import br.com.ec6.modular.model.Profile;
 import br.com.ec6.modular.model.Enum.EnumPermissao;
 import javafx.fxml.FXML;
@@ -61,22 +62,10 @@ public class CreateProfileController implements Initializable {
 
             pDAO.Insere(p);
 
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Erro!");
-            alert.setContentText("Perfil criado com sucesso!");
-            alert.getDialogPane().toFront();
-            alert.getDialogPane().requestFocus();
-            alert.showAndWait();
-
+            Utils.MostraAlerta("Sucesso!", "Perfil criado com sucesso!", Alert.AlertType.INFORMATION);
             Screens.stage.close();
-
         }catch(Exception ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro!");
-            alert.setContentText(ex.getMessage());
-            alert.showAndWait();
-            alert.getDialogPane().toFront();
-            alert.getDialogPane().requestFocus();
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 }

@@ -62,25 +62,41 @@ public class CreateTaskContoller implements Initializable {
 
             Event evento = cbEvento.getValue();
             TeamMember membro = cbMembro.getValue();
-            String nome = txtNome.getText();
-            String desc = txtDesc.getText();
+            String nome = txtNome.getText().trim();
+            String desc = txtDesc.getText().trim();
             LocalDateTime data = dtDataFin.getValue().atStartOfDay();
 
-            task.setName(nome);
-            task.setDescription(desc);
-            task.setDueDate(data);
+            if(nome.length() > 0)
+                task.setName(nome);
+            else
+                throw new Exception("Digite um nome para a tarefa!");
+            if(desc.length() > 0)
+                task.setDescription(desc);
+            else
+                throw new Exception("Digite a descrição da tarefa!");
+            if(!data.equals(null)) {
+                if (LocalDateTime.now().isAfter(data))
+                    throw new Exception("A data de entrega não pode ser anterior a data atual!");
+                task.setDueDate(data);
+            }
+            else
+                throw new Exception("Selecione uma data de entrega da tarefa!");
+
             task.setRelatedEvent(evento);
             task.setTaskCompleted(false);
 
-            task.setAssignedTo(membro);
+            if(membro != null)
+                task.setAssignedTo(membro);
+            else
+                throw new Exception("Selecione um membro!");
 
             tDAO.Insere(task);
-            MostraAlerta("Tarefa cadastrada com sucesso!");
+            Utils.MostraAlerta("Sucesso!", "Tarefa cadastrada com sucesso!", Alert.AlertType.INFORMATION);
             Utils.sendEmailNotification(membro.getMember().getEmail(), task, true);
-            MostraAlerta("E-mail enviado com sucesso!");
+            Utils.MostraAlerta("Sucesso!", "E-mail enviado com sucesso!", Alert.AlertType.INFORMATION);
             Screens.stage.close();
         }catch (Exception ex){
-            MostraAlerta(ex.getMessage());
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
@@ -93,14 +109,5 @@ public class CreateTaskContoller implements Initializable {
 
         cbMembro.getItems().addAll(mDAO.SelecionaTodos(TeamMember.class));
         cbEvento.getItems().addAll(eDAO.EventosAtivos());
-    }
-
-    private void MostraAlerta(String message){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Aviso!");
-        alert.setContentText(message);
-        alert.getDialogPane().requestFocus();
-        alert.getDialogPane().toFront();
-        alert.showAndWait();
     }
 }

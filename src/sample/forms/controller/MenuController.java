@@ -3,6 +3,7 @@ package sample.forms.controller;
 import br.com.ec6.modular.contoller.TaskDAO;
 import br.com.ec6.modular.contoller.TeamDAO;
 import br.com.ec6.modular.global.SingletonUserLogged;
+import br.com.ec6.modular.global.Utils;
 import br.com.ec6.modular.model.Event;
 import br.com.ec6.modular.model.Task;
 import br.com.ec6.modular.model.Team;
@@ -43,6 +44,8 @@ public class MenuController implements Initializable {
     private Label lblResumo2;
     @FXML
     private Text lblDesc;
+    @FXML
+    private Button btnLogout;
 
     private Stage janela;
 
@@ -52,17 +55,18 @@ public class MenuController implements Initializable {
         Screens.stage.setResizable(false);
         Screens.stage.setMaximized(false);
         Screens.stage.setTitle("Modular HRM - Menu Principal");
-        User uLog = SingletonUserLogged.UserLogged;
-
-        lblUser.setText("Usuário: " + uLog.getName());
-        lblCargo.setText("Perfil: " + uLog.getProfile().getName());
         AtualizaLabel();
 
-        if(uLog.getProfile().getPermissionLevel().equals(EnumPermissao.ADMINISTRADOR.getDescricao())){
-            btnAgenda.setDisable(true);
-            btnAnalytics.setDisable(true);
-            btnTarefas.setDisable(true);
-        }
+        this.btnLogout.setOnMouseClicked((MouseEvent e) -> {
+            try {
+                Screens p = new Screens();
+                p.setScreen("forms/view/frLogin.fxml");
+                p.start(new Stage());
+                janela.close();
+            }catch (Exception ex){
+                Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
+            }
+        });
 
        this.btnAgenda.setOnMouseEntered((MouseEvent e) -> {
             this.lblDesc.setText("A partir desta tela é possível verificar as tarefas agendadas para os usuários, "
@@ -76,7 +80,8 @@ public class MenuController implements Initializable {
         });
 
         this.btnAnalytics.setOnMouseEntered((MouseEvent e) -> {
-            this.lblDesc.setText("A partir desta tela é possível verficar gráficos de eventos e análises profundas dos projetos e equipes!");
+            this.lblDesc.setText("A partir desta tela é possível verficar gráficos de eventos e análises profundas " +
+                    "dos projetos e equipes!");
         });
         this.btnAnalytics.setOnMouseExited((MouseEvent e) -> {
             this.lblDesc.setText("");
@@ -96,7 +101,8 @@ public class MenuController implements Initializable {
         });
 
         this.btnTarefas.setOnMouseEntered((MouseEvent e) -> {
-            this.lblDesc.setText("Cadastro e visualização de tarefas relacionadas os não com eventos cadastrados para os membros de uma equipe!");
+            this.lblDesc.setText("Cadastro e visualização de tarefas relacionadas os não com eventos cadastrados " +
+                    "para os membros de uma equipe!");
         });
         this.btnTarefas.setOnMouseExited((MouseEvent e) -> {
             this.lblDesc.setText("");
@@ -116,19 +122,32 @@ public class MenuController implements Initializable {
             janela.show();
             AtualizaLabel();
         } catch (Exception ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro!");
-            alert.setContentText(ex.getMessage());
-            alert.show();
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
     private void AtualizaLabel(){
-        TaskDAO tDAO = new TaskDAO();
-        TeamDAO teDAO = new TeamDAO();
-        List<Task> tarefasAbertas = tDAO.SelecionaTodos(Task.class);
+        try {
+            TaskDAO tDAO = new TaskDAO();
+            TeamDAO teDAO = new TeamDAO();
+            User uLog = SingletonUserLogged.UserLogged;
 
-        lblResumo1.setText("Tarefas Abertas: " + tarefasAbertas.stream().filter(x -> x.isTaskCompleted() == false).count());
-        lblResumo2.setText("Times Criados: " + teDAO.SelecionaTodos(Team.class).size());
+            lblUser.setText("Usuário: " + uLog.getName());
+            lblCargo.setText("Perfil: " + uLog.getProfile().getName());
+
+
+            if(uLog.getProfile().getPermissionLevel().equals(EnumPermissao.ADMINISTRADOR.getDescricao())){
+                btnAgenda.setDisable(true);
+                btnAnalytics.setDisable(true);
+                btnTarefas.setDisable(true);
+            }
+
+            List<Task> tarefasAbertas = tDAO.SelecionaTodos(Task.class);
+
+            lblResumo1.setText("Tarefas Abertas: " + tarefasAbertas.stream().filter(x -> x.isTaskCompleted() == false).count());
+            lblResumo2.setText("Times Criados: " + teDAO.SelecionaTodos(Team.class).size());
+        }catch (Exception ex){
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 }

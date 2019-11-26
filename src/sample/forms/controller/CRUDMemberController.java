@@ -1,6 +1,7 @@
 package sample.forms.controller;
 
 import br.com.ec6.modular.contoller.MemberDAO;
+import br.com.ec6.modular.global.Utils;
 import br.com.ec6.modular.model.Member;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -68,20 +69,10 @@ public class CRUDMemberController implements Initializable {
             member.setPhone(telefone);
 
             mDAO.Insere(member);
-
-            MostraAlerta("Membro cadastrado com sucesso!");
+            Utils.MostraAlerta("Sucesso!", "Membro cadastrado com sucesso!", Alert.AlertType.INFORMATION);
             Screens.stage.close();
         }catch(Exception ex){
-            MostraAlerta(ex.getMessage());
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
-    }
-
-    private void MostraAlerta(String message){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Aviso!");
-        alert.setContentText(message);
-        alert.getDialogPane().requestFocus();
-        alert.getDialogPane().toFront();
-        alert.showAndWait();
     }
 }

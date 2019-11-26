@@ -3,6 +3,7 @@ package sample.forms.controller;
 import br.com.ec6.modular.contoller.ProfileDAO;
 import br.com.ec6.modular.contoller.UsersDAO;
 import br.com.ec6.modular.global.SingletonRowData;
+import br.com.ec6.modular.global.Utils;
 import br.com.ec6.modular.model.Profile;
 import br.com.ec6.modular.model.User;
 import javafx.fxml.FXML;
@@ -47,11 +48,7 @@ public class EditUserController implements Initializable {
         Screens.stage.setResizable(false);
         Screens.stage.setMaximized(false);
         Screens.stage.setTitle("Modular HRM - Editar usuario");
-
-        ProfileDAO pDAO = new ProfileDAO();
-
-        cbPerfil.getItems().clear();
-        cbPerfil.getItems().addAll(pDAO.SelecionaTodos(Profile.class));
+        AtualizaCombo();
 
         txtNome.setText(uRow.getName());
         txtUsuario.setText(uRow.getUserName());
@@ -67,7 +64,6 @@ public class EditUserController implements Initializable {
         this.btnCancelar.setOnMouseClicked((MouseEvent e) -> {
             janela.close();
         });
-
     }
 
     private void AlterarUsuario(){
@@ -109,19 +105,17 @@ public class EditUserController implements Initializable {
 
         uDAO.Altera(uRow);
 
-        MostraAlerta("Usuário alterado com sucesso!");
+        Utils.MostraAlerta("Sucesso!", "Usuário alterado com sucesso!", Alert.AlertType.INFORMATION);
         Screens.stage.close();
         }catch (Exception ex){
-            MostraAlerta(ex.getMessage());
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
-    private void MostraAlerta(String message){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Aviso!");
-        alert.setContentText(message);
-        alert.getDialogPane().requestFocus();
-        alert.getDialogPane().toFront();
-        alert.showAndWait();
+    private void AtualizaCombo() {
+        ProfileDAO pDAO = new ProfileDAO();
+
+        cbPerfil.getItems().clear();
+        cbPerfil.getItems().addAll(pDAO.SelecionaTodos(Profile.class));
     }
 }

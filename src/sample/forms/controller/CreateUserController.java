@@ -3,6 +3,7 @@ package sample.forms.controller;
 import br.com.ec6.modular.contoller.MemberDAO;
 import br.com.ec6.modular.contoller.ProfileDAO;
 import br.com.ec6.modular.contoller.UsersDAO;
+import br.com.ec6.modular.global.Utils;
 import br.com.ec6.modular.model.Member;
 import br.com.ec6.modular.model.Profile;
 import br.com.ec6.modular.model.User;
@@ -97,25 +98,14 @@ public class CreateUserController implements Initializable {
             else
                 throw new Exception("Selecione um perfil!");
 
-
             uDAO.Insere(user);
-
-            MostraAlerta("Usuário cadastrado com sucesso!");
+            Utils.MostraAlerta("Sucesso!", "Usuário cadastrado com sucesso!", Alert.AlertType.INFORMATION);
             Screens.stage.close();
         }catch (ConstraintViolationException ex){
-            MostraAlerta("Usuário já cadastrado!");
+            Utils.MostraAlerta("Aviso!", "Usuário já cadastrado!", Alert.AlertType.WARNING);
         }
         catch(Exception ex){
-            MostraAlerta(ex.getMessage());
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
-    }
-
-    private void MostraAlerta(String message){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Aviso!");
-        alert.setContentText(message);
-        alert.getDialogPane().requestFocus();
-        alert.getDialogPane().toFront();
-        alert.showAndWait();
     }
 }

@@ -61,6 +61,7 @@ public class AnalyticsController implements Initializable {
         }
         return areaData;
     }
+
     public static XYChart.Series getMemberData(){
 
         XYChart.Series areaData = new XYChart.Series();

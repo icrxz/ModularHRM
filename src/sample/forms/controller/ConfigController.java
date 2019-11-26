@@ -1,6 +1,7 @@
 package sample.forms.controller;
 
 import br.com.ec6.modular.global.SingletonUserLogged;
+import br.com.ec6.modular.global.Utils;
 import br.com.ec6.modular.model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -79,10 +80,7 @@ public class ConfigController implements Initializable {
             p.setScreen(screen);
             p.start(new Stage());
         } catch (Exception ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro!");
-            alert.setContentText(ex.getMessage());
-            alert.show();
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 }

@@ -8,9 +8,12 @@ import javafx.stage.Stage;
 
 public class Screens extends Application {
 
+    private final String PATH_MENU = "forms/view/frMenu.fxml";
+    private final String PATH_LOGIN = "forms/view/frLogin.fxml";
+
     public static Stage stage;
-    private String Screen = "forms/view/frLogin.fxml";
     public static Class classe;
+    private String Screen = PATH_LOGIN;
 
     public String getScreen() {
         return Screen;
@@ -35,7 +38,7 @@ public class Screens extends Application {
 
         stage.setScene(scene);
         stage.toFront();
-        if(Screen.equals("forms/view/frMenu.fxml"))
+        if(Screen.equals(PATH_MENU) || Screen.equals(PATH_LOGIN))
             stage.show();
         else
             stage.showAndWait();

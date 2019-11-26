@@ -3,6 +3,7 @@ package sample.forms.controller;
 import br.com.ec6.modular.contoller.ProjectDAO;
 import br.com.ec6.modular.contoller.TeamDAO;
 import br.com.ec6.modular.global.SingletonRowData;
+import br.com.ec6.modular.global.Utils;
 import br.com.ec6.modular.model.Project;
 import br.com.ec6.modular.model.Team;
 import javafx.fxml.FXML;
@@ -71,18 +72,11 @@ public class EditTeamController implements Initializable {
                 throw new Exception("Selecione um projeto!");
 
             tDao.Altera(tRow);
-
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Sucesso!");
-            alert.setContentText(("Time alterado com sucesso!"));
-            alert.showAndWait();
+            Utils.MostraAlerta("Sucesso!", "Time alterado com sucesso!", Alert.AlertType.INFORMATION);
             Screens.stage.close();
         }
         catch(Exception ex){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro!");
-            alert.setContentText((ex.getMessage()));
-            alert.showAndWait();
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
@@ -95,18 +89,11 @@ public class EditTeamController implements Initializable {
             if (projectList.size() > 0)
                 cbProjeto.getItems().addAll(projectList);
             else{
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Aviso!");
-                alert.setContentText("Nenhum projeto ativo foi encontrado!");
-                alert.show();
+                Utils.MostraAlerta("Aviso", "Nenhum projeto ativo foi encontrado!", Alert.AlertType.INFORMATION);
             }
-
         }
         catch (Exception ex){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro!");
-            alert.setContentText(ex.getMessage());
-            alert.show();
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 }

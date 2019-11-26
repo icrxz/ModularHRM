@@ -40,7 +40,8 @@
                               <Pane prefHeight="98.0" prefWidth="708.0">
                                  <children>
                                     <Label fx:id="lblResumo1" layoutX="123.0" layoutY="28.0" styleClass="label-bright" text="{Resumo1}" />
-                                    <Label fx:id="lblResumo2" layoutX="479.0" layoutY="28.0" styleClass="label-bright" text="{Resumo2}" />
+                                    <Label fx:id="lblResumo2" layoutX="393.0" layoutY="28.0" styleClass="label-bright" text="{Resumo2}" />
+                                    <Button fx:id="btnLogout" layoutX="582.0" layoutY="32.0" mnemonicParsing="false" text="Logout" />
                                  </children>
                               </Pane>
                            </children>

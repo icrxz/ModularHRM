@@ -3,6 +3,7 @@ package sample.forms.controller;
 import br.com.ec6.modular.contoller.ProjectDAO;
 import br.com.ec6.modular.contoller.TeamDAO;
 import br.com.ec6.modular.global.SingletonUserLogged;
+import br.com.ec6.modular.global.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -60,10 +61,7 @@ public class CRUDTeamController implements Initializable {
 
         }
         catch (Exception ex){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro!");
-            alert.setContentText(ex.getMessage());
-            alert.show();
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
@@ -87,18 +85,11 @@ public class CRUDTeamController implements Initializable {
             t.setManager(SingletonUserLogged.UserLogged);
 
             tDao.Insere(t);
-
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Sucesso!");
-            alert.setContentText(("Time cadastrado com sucesso!"));
-            alert.showAndWait();
+            Utils.MostraAlerta("Sucesso!", "Time cadastrado com sucesso!", Alert.AlertType.INFORMATION);
             Screens.stage.close();
         }
         catch(Exception ex){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro!");
-            alert.setContentText((ex.getMessage()));
-            alert.showAndWait();
+            Utils.MostraAlerta("Erro!", ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 }
