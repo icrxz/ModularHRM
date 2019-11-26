@@ -1,5 +1,6 @@
 package br.com.ec6.modular.contoller;
 
+import br.com.ec6.modular.global.SingletonDatabaseConnect;
 import br.com.ec6.modular.global.SingletonUserLogged;
 import br.com.ec6.modular.model.Basis;
 import br.com.ec6.modular.model.User;
@@ -86,8 +87,9 @@ public abstract class BasisDAO <E extends Basis> {
     }
 
     protected final EntityManager getConnection(){
+        SingletonDatabaseConnect sdc = SingletonDatabaseConnect.getInstance();
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("ModularHRM", sdc.persistenceMap);
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("ModularHRM");
         EntityManager manager = factory.createEntityManager();
         return manager;
     }

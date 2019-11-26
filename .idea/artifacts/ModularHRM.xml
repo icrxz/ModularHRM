@@ -1,12 +1,13 @@
 <component name="ArtifactManager">
-  <artifact type="javafx" name="ModularHRM">
+  <artifact type="javafx" build-on-make="true" name="ModularHRM">
     <output-path>$PROJECT_DIR$/out/artifacts/ModularHRM</output-path>
     <properties id="javafx-properties">
       <options>
-        <option name="appClass" value="" />
+        <option name="appClass" value="sample.Main" />
         <option name="description" value="" />
         <option name="htmlPlaceholderId" value="" />
-        <option name="title" value="Modular HRM" />
+        <option name="nativeBundle" value="all" />
+        <option name="title" value="" />
         <option name="vendor" value="" />
         <option name="version" value="" />
       </options>
@@ -14,7 +15,15 @@
     <root id="root">
       <element id="archive" name="ModularHRM.jar">
         <element id="module-output" name="ModularHRM" />
+        <element id="library" level="project" name="mssql-jdbc-7.4.0.jre8" />
+        <element id="library" level="project" name="mail" />
+        <element id="library" level="project" name="Hibernate" />
+        <element id="module-source" name="ModularHRM" />
       </element>
+      <element id="library" level="project" name="activation" />
+      <element id="module-output" name="ModularHRM" />
+      <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/ModularHRM/META-INF/persistence.xml" />
+      <element id="file-copy" path="$PROJECT_DIR$/CriaBanco.sql" />
     </root>
   </artifact>
 </component>

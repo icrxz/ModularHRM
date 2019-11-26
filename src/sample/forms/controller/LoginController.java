@@ -57,6 +57,22 @@ public class LoginController implements Initializable {
                 Entrar();
             }
         });
+
+        txtLogin.setOnKeyPressed((KeyEvent e) -> {
+            if(e.getCode() == KeyCode.F7)
+            {
+                try{
+                Screens p = new Screens();
+                p.setScreen("forms/view/frConfigDatabase.fxml");
+                p.start(new Stage());
+                }catch (Exception ex){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erro!");
+                    alert.setContentText(ex.getMessage());
+                    alert.show();
+                }
+            }
+        });
     }
 
     public void Entrar() {

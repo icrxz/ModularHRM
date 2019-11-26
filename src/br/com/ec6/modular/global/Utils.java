@@ -3,6 +3,7 @@ package br.com.ec6.modular.global;
 import br.com.ec6.modular.model.Event;
 import br.com.ec6.modular.model.Task;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 import javax.mail.Address;
 import javax.mail.Message;
@@ -22,8 +23,8 @@ public class Utils {
         body = "Ola "+event.getResponsibleTeamMember().getMember().getName()+"\n\nHouve uma atualização no Evento: "+event.getName()+
                 "\n\nDescrição: "+event.getDescription()+
                 "\nTipo: "+event.getType()+
-                "\nHorario Inicio: "+event.getDateStart()+
-                "\nHorario Fim: "+event.getDateEnd()+
+                "\nHorario Inicio: "+event.getDateStart().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))+
+                "\nHorario Fim: "+event.getDateEnd().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))+
                 "\nLocal: "+event.getLocation();
         sendEmail(emailTo, body, subject);
     }
@@ -34,7 +35,7 @@ public class Utils {
                 "\n\nDescrição: "+event.getDescription()+
                 "\nTarefa: "+event.isTaskCompleted()+
                 "\nEvento: "+event.getRelatedEvent().getName()+
-                "\nData de entrega: "+event.getDueDate();
+                "\nData de entrega: "+event.getDueDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
         //body = "teste";
         sendEmail(emailTo, body, subject);
     }

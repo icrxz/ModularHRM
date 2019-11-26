@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="678.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.view.FrConfigDatabase">
+<AnchorPane prefHeight="400.0" prefWidth="678.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.forms.controller.ConfigDatabaseController">
    <children>
       <Label layoutX="48.0" layoutY="14.0" styleClass="label-header" text="Configuração Banco de Dados" />
       <Button fx:id="btnSalvar" layoutX="289.0" layoutY="274.0" mnemonicParsing="false" text="Salvar" />

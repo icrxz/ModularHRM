@@ -39,7 +39,12 @@ public class ConfigController implements Initializable {
         Screens.stage.setTitle("Modular HRM - Configuração");
 
         if(SingletonUserLogged.UserLogged.getProfile().getPermissionLevel().equals(EnumPermissao.ADMINISTRADOR.getDescricao())){
-
+            btnMembros.setDisable(true);
+            btnMembrosTime.setDisable(true);
+            btnProjetos.setDisable(true);
+            btnTimes.setDisable(true);
+            btnPerfil.setDisable(false);
+            btnUsuarios.setDisable(false);
         }
 
         this.btnTimes.setOnMouseClicked((MouseEvent e) -> {
